@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://arduino.cc/en/Main/ArduinoBoardMega2560 -->
+<html class=" js no-touch boxshadow opacity fontface svg inlinesvg svgclippaths no-ie8compat" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script id="LR1" type="text/javascript" async="" src="./Arduino - ArduinoBoardMega2560_files/client.js"></script><script src="./Arduino - ArduinoBoardMega2560_files/cb=gapi.loaded_1" async=""></script><script src="./Arduino - ArduinoBoardMega2560_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" src="./Arduino - ArduinoBoardMega2560_files/plusone.js" gapi_processed="true"></script><script type="text/javascript" src="./Arduino - ArduinoBoardMega2560_files/widgets.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta charset="utf-8">
+
+	<title>Arduino - ArduinoBoardMega2560 </title>
+	<link rel="shortcut icon" type="image/x-icon" href="http://arduino.cc/en/favicon.png">
+
+	<script type="text/javascript" async="" src="./Arduino - ArduinoBoardMega2560_files/ga.js"></script><script src="./Arduino - ArduinoBoardMega2560_files/jquery-1.10.2.min.js"></script>
+
+	<link rel="stylesheet" href="./Arduino - ArduinoBoardMega2560_files/fonts.css" type="text/css">
+	<link rel="stylesheet" href="http://arduino.cc/css/arduino-icons.css">
+	<link rel="stylesheet" href="http://arduino.cc/css/animation.css"><!--[if IE 7]>
+	<link rel="stylesheet" href="http://arduino.cc/css/arduino-icons-ie7.css"><![endif]-->
+	<!--[if gte IE 9]><!-->
+	<link rel="stylesheet" href="./Arduino - ArduinoBoardMega2560_files/foundation2.css" type="text/css">
+	<!--[endif]---->
+	<!--[if IE 8]>
+		<link rel='stylesheet' href='http://arduino.cc/css/foundation_ie8.css' type='text/css' />	
+	<![endif]-->
+	<link rel="stylesheet" href="./Arduino - ArduinoBoardMega2560_files/arduino_code_highlight.css" type="text/css">
+	<link rel="stylesheet" type="text/css" media="screen" href="./Arduino - ArduinoBoardMega2560_files/typeplate.css">
+	<link rel="stylesheet" href="./Arduino - ArduinoBoardMega2560_files/arduinoWide_SSO.css" type="text/css">
+
+	<link rel="stylesheet" href="./Arduino - ArduinoBoardMega2560_files/common.css" type="text/css">
+	<link href="https://plus.google.com/114839908922424087554" rel="publisher">
+
+	<!-- embedded JS and CSS from PmWiki plugins -->	
+	<!--HeaderText--><style type="text/css"><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  
+span.anchor {
+	float: left;
+	font-size: 10px;
+	margin-left: -10px;
+	width: 10px;
+    position:relative; top:-0.1em;
+	text-align: center;
+}
+span.anchor a { text-decoration: none; }
+span.anchor a:hover { text-decoration: underline; }
+ol.toc { text-indent:-20px; list-style: none; }
+ol.toc ol.toc { text-indent:-40px; }
+div.tocfloat { font-size: smaller; margin-bottom: 10px;
+    border-top: 1px dotted #555555; border-bottom: 1px dotted #555555;
+    padding-top: 5px; padding-bottom: 5px; 
+    width: 38%; float: right; margin-left: 10px; clear: right;
+    margin-right:-13px; padding-right: 13px; padding-left: 13px;
+    background-color: #eeeeee; }
+div.toc { font-size: smaller; 
+    padding: 5px; border: 1px dotted #cccccc;
+    background: #f7f7f7;
+    margin-bottom: 10px; }
+div.toc p { background-color: #f9f6d6;
+    margin-top:-5px;   padding-top: 5px;
+    margin-left:-5px;  padding-left: 5px;
+    margin-right:-5px; padding-right: 5px;
+    padding-bottom: 3px;
+    border-bottom:  1px dotted #cccccc; }.editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border: 2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  td.markup1 { border-bottom: 1px solid #ccf; }
+  div.faq { margin-left:2em; }
+  div.faq p.question { margin: 1em 0 0.75em -2em; font-weight:bold; }
+  div.faq hr { margin-left: -2em; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style><script type="text/javascript">
+function toggle(obj) {
+    var elstyle = document.getElementById(obj).style;
+    var text    = document.getElementById(obj + "tog");
+    if (elstyle.display == 'none') {
+        elstyle.display = 'block';
+        text.innerHTML = "hide";
+    } else {
+        elstyle.display = 'none';
+        text.innerHTML = "show";
+    }
+}
+</script>  <meta name="robots" content="index,follow">
+
+
+	<script src="./Arduino - ArduinoBoardMega2560_files/custom.modernizr.js"></script>
+
+	<!-- do not remove none of those lines, comments embedding in pages will break! -->
+	<script src="./Arduino - ArduinoBoardMega2560_files/jquery-ui.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="./Arduino - ArduinoBoardMega2560_files/jquery-ui.min.css" type="text/css">
+	<script src="./Arduino - ArduinoBoardMega2560_files/saved_resource" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="./Arduino - ArduinoBoardMega2560_files/comments.css"><link rel="stylesheet" type="text/css" media="screen" href="./Arduino - ArduinoBoardMega2560_files/jquery-ui.css"><link rel="stylesheet" type="text/css" href="./Arduino - ArduinoBoardMega2560_files/widget005.old.css" media="all"><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fbpluginrecommendationsbarleft,.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}.fbpluginrecommendationsbarleft{left:10px}.fbpluginrecommendationsbarright{right:10px}</style></head>
+<body data-twttr-rendered="true" style="padding-top: 40px;"><iframe id="twttrHubFrameSecure" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" name="twttrHubFrameSecure" src="./Arduino - ArduinoBoardMega2560_files/hub(1).htm" style="position: absolute; top: -9999em; width: 10px; height: 10px;"></iframe><iframe id="twttrHubFrame" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" name="twttrHubFrame" src="./Arduino - ArduinoBoardMega2560_files/hub.htm" style="position: absolute; top: -9999em; width: 10px; height: 10px;"></iframe>
+
+	<div id="menuWings" class="fixed" style="display: block;"></div>
+	<div id="page">
+		
+		
+<script>
+	var userAgent = (navigator.userAgent || navigator.vendor || window.opera).toLowerCase();
+	if(userAgent.indexOf('mac')>0){
+		$("head").append('<style type="text/css">@-moz-document url-prefix() {h1 a, h2 a, h3 a, h4 a, h5 a, h1 a:hover, h2 a:hover, th a, th a:hover, h3 a:hover, h4 a:hover, h5 a:hover, #wikitext h2 a:hover, #wikitext h3 a:hover, #wikitext h4 a:hover {padding-bottom: 0.5em!important;} #pageheader .search input{font-family: "TyponineSans Regular 18";} #pagefooter .monospace{margin-top: -4px;} #navWrapper ul.left &gt; li{margin-top: -2px; padding-bottom: 2px;}#navWrapper ul.right &gt; li{margin-top: -5px; padding-bottom: 5px;}#navWrapper ul.right &gt; li ul{margin-top: 4px;} .slider-container .fixed-caption p{padding:8px 0 14px 0}}</style>');
+	}
+</script>
+
+<!--[if IE]>
+<link rel='stylesheet' href='https://id.arduino.cc//css/ie-monospace.css' type='text/css' />
+<![endif]-->
+
+<div id="menuWings" class="fixed"></div>
+
+<!--[if IE 8]>
+<div class="alert-box panel ie8alert">
+  <p><strong>Arduino.cc offers limited compatibility for Internet Explorer 8. Get a modern browser as Chrome, Firefox or Safari.</strong></p>
+  <a href="" class="close">&times;</a>
+</div>
+<![endif]-->
+
+<div id="pageheader">
+	<div class="row">
+		<div class="small-6 large-8 eight columns">
+			<div class="title"><a href="http://arduino.cc/">Arduino</a></div>
+		</div>
+		<div class="small-6 large-4 four columns search">
+			<div class="row collapse">
+				<form method="GET" action="http://www.google.com/search">
+	<div class="small-12 twelve columns">
+		<i class="icon-search-2"></i>
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="hidden" name="oe" value="UTF-8">
+		<input type="text" name="q" size="25" maxlength="255" value="" placeholder="Search the Arduino Website">
+		<input type="submit" name="btnG" value="search">
+		<input type="hidden" name="domains" value="http://arduino.cc">
+		<input type="hidden" name="sitesearch" value="http://arduino.cc">
+	</div>
+</form>			</div>
+		</div>
+	</div>
+
+	<!--[if gte IE 9]><!-->
+	<div id="navWrapper" class="sticky fixed">
+	<!--[endif]---->
+	<!--[if IE 8]>
+		<div id="navWrapper">
+	<![endif]-->
+		<nav class="top-bar" data-options="is_hover:true">
+			<ul class="title-area">
+				<li class="name"></li>
+			</ul>
+
+			
+		<section class="top-bar-section">
+				<ul class="left">
+					<li id="navLogo" style="display: block;">
+						<a href="http://arduino.cc/">
+							<img src="./Arduino - ArduinoBoardMega2560_files/logo_46.png" alt="userpicture">
+						</a>
+					</li>
+					<li id="navHome" style="display: none;"><a href="http://arduino.cc/">Home</a></li>
+					<li><a href="http://store.arduino.cc/">Buy</a></li>
+					<li><a href="http://arduino.cc/en/Main/Software">Download</a></li>
+					<li class="has-dropdown active not-click"><a href="http://arduino.cc/en/Main/Products">Products</a>
+						<ul class="dropdown"><li class="title back js-generated"><h5><a href="http://arduino.cc/en/Main/ArduinoBoardMega2560#"><span class="backArrow">Back</span></a></h5></li><li><a class="parent-link js-generated" href="http://arduino.cc/en/Main/Products">Products</a></li>
+							<li><a href="http://arduino.cc/en/Main/Products">Arduino</a></li>
+							<li><a href="http://arduino.cc/en/ArduinoAtHeart/Products">AtHeart</a></li>
+							<li><a href="http://arduino.cc/en/ArduinoCertified/Products">Certified</a></li>
+						</ul>
+					</li>
+					<li class="has-dropdown not-click"><a href="http://arduino.cc/en/Main/ArduinoBoardMega2560#">Learning</a>
+						<ul class="dropdown"><li class="title back js-generated"><h5><a href="http://arduino.cc/en/Main/ArduinoBoardMega2560#"><span class="backArrow">Back</span></a></h5></li>
+							<li><a href="http://arduino.cc/en/Guide/HomePage">Getting started</a></li>
+							<li><a href="http://arduino.cc/en/Tutorial/HomePage">Examples</a></li>
+							<li><a href="http://playground.arduino.cc/">Playground</a></li>
+						</ul>
+					</li>
+					<li><a href="http://arduino.cc/en/Reference/HomePage">Reference</a></li>
+					<li class="has-dropdown not-click"><a href="http://arduino.cc/en/Main/ArduinoBoardMega2560#">Support</a>
+						<ul class="dropdown"><li class="title back js-generated"><h5><a href="http://arduino.cc/en/Main/ArduinoBoardMega2560#"><span class="backArrow">Back</span></a></h5></li>
+							<li><a href="http://arduino.cc/en/Main/FAQ">FAQ</a></li>
+							<li><a href="http://forum.arduino.cc/">Forum</a></li>
+							<li><a href="http://arduino.cc/en/ContactUs">Contact Us</a></li>
+						</ul>
+					</li>
+					<li><a href="http://blog.arduino.cc/">Blog</a></li>
+				</ul>
+
+								<ul class="right">
+					<li><a href="https://id.arduino.cc/auth/login/?returnurl=http%3A%2F%2Farduino.cc%2Fen%2FMain%2FArduinoBoardMega2560" class="cart">LOG IN</a></li>
+					<li><a href="https://id.arduino.cc/auth/signup" class="cart">SIGN UP</a></li>
+				</ul>
+							</section></nav>
+	</div>
+</div>
+
+
+
+		<br class="clear">
+
+		<div id="pagetext">
+				<!--PageText-->
+<div id="wikitext">
+<h2>Arduino Mega 2560</h2>
+<p class="vspace"></p>
+<table border="0" align="centre"><tbody><tr><td valign="top"><a class="urllink" href="http://arduino.cc/en/uploads/Main/ArduinoMega2560_R3_Fronte.jpg" rel="nofollow"><img src="./Arduino - ArduinoBoardMega2560_files/ArduinoMega2560_R3_Front_450px.jpg" alt="" title=""></a>
+</td><td valign="top"><a class="urllink" href="http://arduino.cc/en/uploads/Main/ArduinoMega2560_R3_Back.jpg" rel="nofollow"><img src="./Arduino - ArduinoBoardMega2560_files/ArduinoMega2560_R3_Back_450px.jpg" alt="" title=""></a>
+</td></tr><tr><td valign="top"><em>Arduino Mega 2560 R3 Front</em>
+</td><td valign="top"><em>Arduino Mega2560 R3 Back</em>
+<p class="vspace"></p></td></tr></tbody></table>
+<table border="0"><tbody><tr><td valign="top"> <a class="urllink" href="http://store.arduino.cc/ww/index.php?main_page=product_info&cPath=11_12&products_id=196" rel="nofollow"><img src="./Arduino - ArduinoBoardMega2560_files/buttonStore.jpg" alt="" title=""></a>
+</td><td valign="top"><a class="urllink" href="http://arduino.cc/en/Main/Buy" rel="nofollow"><img src="./Arduino - ArduinoBoardMega2560_files/buttonDistributors.jpg" alt="" title=""></a>
+</td></tr></tbody></table>
+<p class="vspace"></p><h3>Overview</h3>
+<p>The Arduino Mega 2560 is a microcontroller board based on the <span class="wikiword">ATmega2560</span>  (<a class="urllink" href="http://www.atmel.com/Images/Atmel-2549-8-bit-AVR-Microcontroller-ATmega640-1280-1281-2560-2561_datasheet.pdf" rel="nofollow" target="_blank">datasheet</a>).  It has 54 digital input/output pins (of which 15 can be used as PWM outputs), 16 analog inputs, 4 <span class="wikiword">UARTs</span> (hardware serial ports), a 16 <span class="wikiword">MHz</span> crystal oscillator, a USB connection, a power jack, an ICSP header, and a reset button.  It contains everything needed to support the microcontroller; simply connect it to a computer with a USB cable or power it with a AC-to-DC adapter or battery to get started.  The Mega is compatible with most shields designed for the Arduino Duemilanove or Diecimila.
+</p>
+<p class="vspace"></p><p>The Mega 2560 is an update to the <a class="wikilink" href="http://arduino.cc/en/Main/ArduinoBoardMega">Arduino Mega</a>, which it replaces.
+</p>
+<p class="vspace"></p><p>The Mega2560 differs from all preceding boards in that it does not use the FTDI USB-to-serial driver chip. Instead, it features the <span class="wikiword">ATmega16U2</span> (<span class="wikiword">ATmega8U2</span> in the revision 1 and revision 2 boards) programmed as a USB-to-serial converter.<br><ins>Revision 2</ins> of the Mega2560 board has a resistor pulling the 8U2 HWB line to ground, making it easier to put into <a class="wikilink" href="http://arduino.cc/en/Hacking/DFUProgramming8U2">DFU mode</a>.<br><ins>Revision 3</ins> of the board has the following new features:
+</p><ul><li> 1.0 pinout: added SDA and SCL pins that are near to the AREF pin and two other new pins placed near to the RESET pin, the IOREF that allow the shields to adapt to the voltage provided from the board. In future, shields will be compatible both with the board that use the AVR, which operate with 5V and with the Arduino Due that operate with 3.3V. The second one is a not connected pin, that is reserved for future purposes.
+</li><li>Stronger RESET circuit.
+</li><li>Atmega 16U2 replace the 8U2.
+</li></ul><p class="vspace"></p><h3>Schematic, Reference Design &amp; Pin Mapping</h3>
+<p>EAGLE files: <a class="urllink" href="http://arduino.cc/en/uploads/Main/arduino-mega2560_R3-ref-design.zip" rel="nofollow">arduino-mega2560_R3-reference-design.zip</a>
+</p>
+<p class="vspace"></p><p>Schematic: <a class="urllink" href="http://arduino.cc/en/uploads/Main/arduino-mega2560_R3-sch.pdf" rel="nofollow">arduino-mega2560_R3-schematic.pdf</a>
+</p>
+<p class="vspace"></p><p>Pin Mapping: <a class="wikilink" href="http://arduino.cc/en/Hacking/PinMapping2560">PinMap2560 page</a>
+</p><h3>Summary</h3>
+<table border="0"><tbody><tr><td align="left">Microcontroller</td><td align="left"><span class="wikiword">ATmega2560</span></td></tr>
+<tr><td align="left">Operating Voltage</td><td align="left">5V</td></tr>
+<tr><td align="left">Input Voltage (recommended)</td><td align="left">7-12V</td></tr>
+<tr><td align="left">Input Voltage (limits)</td><td align="left">6-20V</td></tr>
+<tr><td align="left">Digital I/O Pins</td><td align="left">54  (of which 15 provide PWM output)</td></tr>
+<tr><td align="left">Analog Input Pins</td><td align="left">16</td></tr>
+<tr><td align="left">DC Current per I/O Pin</td><td align="left">40 mA</td></tr>
+<tr><td align="left">DC Current for 3.3V Pin</td><td align="left">50 mA</td></tr>
+<tr><td align="left">Flash Memory</td><td align="left">256 KB of which 8 KB used by bootloader</td></tr>
+<tr><td align="left">SRAM</td><td align="left">8 KB</td></tr>
+<tr><td align="left">EEPROM</td><td align="left">4 KB</td></tr>
+<tr><td align="left">Clock Speed</td><td align="left">16 <span class="wikiword">MHz</span></td></tr>
+</tbody></table>
+<p class="vspace"></p><h3>Power</h3>
+<p>The Arduino Mega can be powered via the USB connection or with an external power supply.  The power source is selected automatically.
+</p>
+<p class="vspace"></p><p>External (non-USB) power can come either from an AC-to-DC adapter (wall-wart) or battery.  The adapter can be connected by plugging a 2.1mm center-positive plug into the board's power jack.  Leads from a battery can be inserted in the Gnd and Vin pin headers of the POWER connector.  
+</p>
+<p class="vspace"></p><p>The board can operate on an external supply of 6 to 20 volts.  If supplied with less than 7V, however, the 5V pin may supply less than five volts and the board may be unstable.  If using more than 12V, the voltage regulator may overheat and damage the board.  The recommended range is 7 to 12 volts.
+</p>
+<p class="vspace"></p><p>The power pins are as follows:
+</p>
+<p class="vspace"></p><ul><li><strong>VIN.</strong>  The input voltage to the Arduino board when it's using an external power source (as opposed to 5 volts from the USB connection or other regulated power source).  You can supply voltage through this pin, or, if supplying voltage via the power jack, access it through this pin.  
+<p class="vspace"></p></li><li><strong>5V.</strong> This pin outputs a regulated 5V from the regulator on the board.  The board can be supplied with power either from the DC power jack (7 - 12V), the USB connector (5V), or the VIN pin of the board (7-12V).  Supplying voltage via the 5V or 3.3V pins bypasses the regulator, and can damage your board. We don't advise it.
+<p class="vspace"></p></li><li><strong>3V3.</strong>  A 3.3 volt supply generated by the on-board regulator.  Maximum current draw is 50 mA.
+<p class="vspace"></p></li><li><strong>GND.</strong> Ground pins.  
+<p class="vspace"></p></li><li><strong>IOREF.</strong> This pin on the Arduino board provides the voltage reference with which the microcontroller operates. A properly configured shield can read the IOREF pin voltage and select the appropriate power source or enable voltage translators on the outputs for working with the 5V or 3.3V.
+</li></ul><p class="vspace"></p><h3>Memory</h3>
+<p>The <span class="wikiword">ATmega2560</span> has 256 KB of flash memory for storing code (of which 8 KB is used for the bootloader), 8 KB of SRAM and 4 KB of EEPROM (which can be read and written with the <a class="urllink" href="http://www.arduino.cc/en/Reference/EEPROM" rel="nofollow">EEPROM library</a>).
+</p>
+<p class="vspace"></p><h3>Input and Output</h3>
+<p>Each of the 54 digital pins on the Mega can be used as an input or output, using <a class="wikilink" href="http://arduino.cc/en/Reference/PinMode">pinMode()</a>, <a class="wikilink" href="http://arduino.cc/en/Reference/DigitalWrite">digitalWrite()</a>, and <a class="wikilink" href="http://arduino.cc/en/Reference/DigitalRead">digitalRead()</a> functions.  They operate at 5 volts.  Each pin can provide or receive a maximum of 40 mA and has an internal pull-up resistor (disconnected by default) of 20-50 kOhms.  In addition, some pins have specialized functions:
+</p>
+<p class="vspace"></p><ul><li><strong>Serial: 0 (RX) and 1 (TX); Serial 1: 19 (RX) and 18 (TX); Serial 2: 17 (RX) and 16 (TX); Serial 3: 15 (RX) and 14 (TX).</strong>  Used to receive (RX) and transmit (TX) TTL serial data.  Pins 0 and 1 are also connected to the corresponding pins of the <span class="wikiword">ATmega16U2</span> USB-to-TTL Serial chip.  
+<p class="vspace"></p></li><li><strong>External Interrupts: 2 (interrupt 0), 3 (interrupt 1), 18 (interrupt 5), 19 (interrupt 4), 20 (interrupt 3), and 21 (interrupt 2).</strong> These pins can be configured to trigger an interrupt on a low value, a rising or falling edge, or a change in value.  See the <a class="wikilink" href="http://arduino.cc/en/Reference/AttachInterrupt">attachInterrupt()</a> function for details.
+<p class="vspace"></p></li><li><strong>PWM: 2 to 13 and 44 to 46.</strong>  Provide 8-bit PWM output with the <a class="wikilink" href="http://arduino.cc/en/Reference/AnalogWrite">analogWrite()</a> function.  
+<p class="vspace"></p></li><li><strong>SPI: 50 (MISO), 51 (MOSI), 52 (SCK), 53 (SS).</strong>  These pins support SPI communication using the <a class="wikilink" href="http://arduino.cc/en/Reference/SPI">SPI library</a>.  The SPI pins are also broken out on the ICSP header, which is physically compatible with the Uno, Duemilanove and Diecimila.
+<p class="vspace"></p></li><li><strong>LED: 13.</strong> There is a built-in LED connected to digital pin 13.  When the pin is HIGH value, the LED is on, when the pin is LOW, it's off.
+<p class="vspace"></p></li><li><strong>TWI: 20 (SDA) and 21 (SCL).</strong>  Support TWI communication using the <a class="wikilink" href="http://arduino.cc/en/Reference/Wire">Wire library</a>.  Note that these pins are not in the same location as the TWI pins on the Duemilanove or Diecimila.
+</li></ul><p class="vspace"></p><p>The Mega2560 has 16 analog inputs, each of which provide 10 bits of resolution (i.e. 1024 different values).  By default they measure from ground to 5 volts, though is it possible to change the upper end of their range using the AREF pin and analogReference() function. 
+</p>
+<p class="vspace"></p><p>There are a couple of other pins on the board:
+</p>
+<p class="vspace"></p><ul><li><strong>AREF.</strong> Reference voltage for the analog inputs.  Used with <a class="wikilink" href="http://arduino.cc/en/Reference/AnalogReference">analogReference</a>().
+<p class="vspace"></p></li><li><strong>Reset.</strong> Bring this line LOW to reset the microcontroller.  Typically used to add a reset button to shields which block the one on the board.
+</li></ul><p class="vspace"></p><h3>Communication</h3>
+<p>The Arduino Mega2560 has a number of facilities for communicating with a computer, another Arduino, or other microcontrollers.  The <span class="wikiword">ATmega2560</span> provides four hardware <span class="wikiword">UARTs</span> for TTL (5V) serial communication.  An <span class="wikiword">ATmega16U2</span> (<span class="wikiword">ATmega</span> 8U2 on the revision 1 and revision 2 boards) on the board channels one of these over USB  and provides a virtual com port to software on the computer (Windows machines will need a .inf file, but OSX and Linux machines will recognize the board as a COM port automatically.  The Arduino software includes a serial monitor which allows simple textual data to be sent to and from the board.  The RX and TX <span class="wikiword">LEDs</span> on the board will flash when data is being transmitted via the <span class="wikiword">ATmega8U2/ATmega16U2</span> chip and USB connection to the computer (but not for serial communication on pins 0 and 1).
+</p>
+<p class="vspace"></p><p>A <a class="urllink" href="http://www.arduino.cc/en/Reference/SoftwareSerial" rel="nofollow">SoftwareSerial library</a> allows for serial communication on any of the Mega2560's digital pins.
+</p>
+<p class="vspace"></p><p>The <span class="wikiword">ATmega2560</span> also supports TWI and SPI communication.  The Arduino software includes a Wire library to simplify use of the TWI bus; see the <a class="wikilink" href="http://arduino.cc/en/Reference/Wire">documentation</a> for details.  For SPI communication, use the <a class="wikilink" href="http://arduino.cc/en/Reference/SPI">SPI library</a>.
+</p>
+<p class="vspace"></p><h3>Programming</h3>
+<p>The Arduino Mega can be programmed with the Arduino software (<a class="wikilink" href="http://arduino.cc/en/Main/Software">download</a>).  For details, see the <a class="wikilink" href="http://arduino.cc/en/Reference/HomePage">reference</a> and <a class="wikilink" href="http://arduino.cc/en/Tutorial/HomePage">tutorials</a>.
+</p>
+<p class="vspace"></p><p>The <span class="wikiword">ATmega2560</span> on the Arduino Mega comes preburned with a <a class="wikilink" href="http://arduino.cc/en/Tutorial/Bootloader">bootloader</a> that allows you to upload new code to it without the use of an external hardware programmer.  It communicates using the original <span class="wikiword">STK500</span> protocol (<a class="urllink" href="http://www.atmel.com/dyn/resources/prod_documents/doc2525.pdf" rel="nofollow" target="_blank">reference</a>, <a class="urllink" href="http://www.atmel.com/dyn/resources/prod_documents/avr061.zip" rel="nofollow" target="_blank">C header files</a>).
+</p>
+<p class="vspace"></p><p>You can also bypass the bootloader and program the microcontroller through the ICSP (In-Circuit Serial Programming) header; see <a class="wikilink" href="http://arduino.cc/en/Hacking/Programmer">these instructions</a> for details.
+</p>
+<p class="vspace"></p><p>The <span class="wikiword">ATmega16U2</span> (or 8U2 in the rev1 and rev2 boards) firmware source code is available <a class="urllink" href="http://github.com/arduino/Arduino/tree/master/hardware/arduino/firmwares/" rel="nofollow" target="_blank">in the Arduino repository</a>.  The <span class="wikiword">ATmega16U2</span>/8U2 is loaded with a DFU bootloader, which can be activated by:
+</p><ul><li>On Rev1 boards: connecting the solder jumper on the back of the board (near the map of Italy) and then resetting the 8U2.  
+</li><li>On Rev2 or later boards: there is a resistor that pulling the 8U2/16U2 HWB line to ground, making it easier to put into DFU mode.  You can then use <a class="urllink" href="http://www.atmel.com/dyn/products/tools_card.asp?tool_id=3886" rel="nofollow" target="_blank">Atmel's FLIP software</a> (Windows) or the <a class="urllink" href="http://dfu-programmer.sourceforge.net/" rel="nofollow" target="_blank">DFU programmer</a> (Mac OS X and Linux) to load a new firmware.  Or you can use the ISP header with an external programmer (overwriting the DFU bootloader).  See <a class="urllink" href="http://www.arduino.cc/cgi-bin/yabb2/YaBB.pl?num=1285962838" rel="nofollow">this user-contributed tutorial</a> for more information.
+</li></ul><p class="vspace"></p><h3>Automatic (Software) Reset</h3>
+<p>Rather then requiring a physical press of the reset button before an upload, the Arduino Mega2560 is designed in a way that allows it to be reset by software running on a connected computer.  One of the hardware flow control lines (DTR) of the <span class="wikiword">ATmega8U2</span> is connected to the reset line of the <span class="wikiword">ATmega2560</span> via a 100 nanofarad capacitor.  When this line is asserted (taken low), the reset line drops long enough to reset the chip.  The Arduino software uses this capability to allow you to upload code by simply pressing the upload button in the Arduino environment.  This means that the bootloader can have a shorter timeout, as the lowering of DTR can be well-coordinated with the start of the upload.  
+</p>
+<p class="vspace"></p><p>This setup has other implications.  When the Mega2560 is connected to either a computer running Mac OS X or Linux, it resets each time a connection is made to it from software (via USB).  For the following half-second or so, the bootloader is running on the Mega2560.  While it is programmed to ignore malformed data (i.e. anything besides an upload of new code), it will intercept the first few bytes of data sent to the board after a connection is opened.  If a sketch running on the board receives one-time configuration or other data when it first starts, make sure that the software with which it communicates waits a second after opening the connection and before sending this data.
+</p>
+<p class="vspace"></p><p>The Mega2560 contains a trace that can be cut to disable the auto-reset.  The pads on either side of the trace can be soldered together to re-enable it.  It's labeled "RESET-EN".  You may also be able to disable the auto-reset by connecting a 110 ohm resistor from 5V to the reset line; see <a class="urllink" href="http://www.arduino.cc/cgi-bin/yabb2/YaBB.pl?num=1213719666/all" rel="nofollow">this forum thread</a> for details.
+</p>
+<p class="vspace"></p><h3>USB Overcurrent Protection</h3>
+<p>The Arduino Mega2560 has a resettable polyfuse that protects your computer's USB ports from shorts and overcurrent.  Although most computers provide their own internal protection, the fuse provides an extra layer of protection.  If more than 500 mA is applied to the USB port, the fuse will automatically break the connection until the short or overload is removed.  
+</p>
+<p class="vspace"></p><h3>Physical Characteristics and Shield Compatibility</h3>
+<p>The maximum length and width of the Mega2560 PCB are 4 and 2.1 inches respectively, with the USB connector and power jack extending beyond the former dimension.  Three screw holes allow the board to be attached to a surface or case.  Note that the distance between digital pins 7 and 8 is 160 mil (0.16"), not an even multiple of the 100 mil spacing of the other pins.
+</p>
+<p class="vspace"></p><p>The Mega2560 is designed to be compatible with most shields designed for the Uno, Diecimila or Duemilanove.  Digital pins 0 to 13 (and the adjacent AREF and GND pins), analog inputs 0 to 5, the power header, and ICSP header are all in equivalent locations.  Further the main UART (serial port) is located on the same pins (0 and 1), as are external interrupts 0 and 1 (pins 2 and 3 respectively).  SPI is available through the ICSP header on both the Mega2560 and Duemilanove / Diecimila.  <em>Please note that I<sup>2</sup>C is not located on the same pins on the Mega (20 and 21) as the Duemilanove / Diecimila (analog inputs 4 and 5).</em>
+</p>
+<p class="vspace"></p><div id="commentsbox">
+</div><div id="externalcomments" class="wikicomments"><div><h3 class="commentstitle">COMMENTS</h3></div><div class="subcomments"><div class="post" id="d6ab6abd42fb4c8b862f11844133b4d2">			<a name="d6ab6abd42fb4c8b862f11844133b4d2"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">kontsouk</span> <span class="commentdate">2/1/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Are the !!!  and the watchdog problems solved?</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="8085dc32a2e74c23887c31947b584ab8">			<a name="8085dc32a2e74c23887c31947b584ab8"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/cmaglie.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">cmaglie</span> <span class="commentdate">2/4/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">The patch is ready and needs testers:<br>
+<br>
+https://github.com/arduino/Arduino/pull/1183<br>
+<br>
+updated hex file here:<br>
+<br>
+https://github.com/cmaglie/Arduino/blob/mega2560-bootloader/hardware/arduino/bootloaders/stk500v2/stk500boot_v2_mega2560.hex<br>
+<br>
+Hopefully it will be integrated in future 1.0.4 and the firmware updated in production</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="3aadd09a2cfb45609d904b2c610adf80">			<a name="3aadd09a2cfb45609d904b2c610adf80"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">jheighway</span> <span class="commentdate">4/15/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">I have been trying to establish some reliable communication with the mega2560, to get our LeapFrog Creatr 3d printer operating.<br>
+<br>
+Are there 64 Bit Windows drivers avail?<br>
+I saw there was for Linux...<br>
+<br>
+I have both a windows 7 64 bit system and a Win XP 64 bit system.<br>
+<br>
+The Win 7 instructions I have for installing the driver, pointed me to \arduino-1.0.4\drivers\  from there the system auto picks the arduino.inf &amp; off it goes. <br>
+<br>
+My Win XP instructions, pointed me to \arduino-1.0.4\drivers\FTDI USB Drivers\ from that subfolder it autopicks ftdibus.inf, upon saying open/ok, I get the following error:<br>
+"The specified location does not contain a compatible software driver for your device. If the location contains a driver, make sure it is designed to work with Windows 64-based systems."<br>
+<br>
+In both cases the Repetier-Host s/w I am attempting to use seems to hang, or will stack-up commands  in the queue and will send only 1 command with each click of the OK button...<br>
+<br>
+I look forward to your response(s)<br>
+Jim</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="e292ca23b9664959947671efc794cbd5">			<a name="e292ca23b9664959947671efc794cbd5"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/ACicchi.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">ACicchi</span> <span class="commentdate">5/22/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi jheighway,<br>
+you could post your question in our official forum (http://forum.arduino.cc/) choosing the needed topic.<br>
+<br>
+Regards,<br>
+AC</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div><div class="post" id="d0e9aa3337e14c90927993d5b959c390">			<a name="d0e9aa3337e14c90927993d5b959c390"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">meirbns</span> <span class="commentdate">5/20/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi,<br>
+I just plug my new Arduino 2560 R3.<br>
+I set the board for "Arduino 2560 or ADK" <br>
+but the serial port on the dropdown menu is "off". I can't access the serial port to change it.<br>
+Will appreciate your support<br>
+Thanks,<br>
+Meir</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="e38d7b87658f46fda92edf5285969064">			<a name="e38d7b87658f46fda92edf5285969064"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">meirbns</span> <span class="commentdate">5/21/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">  Thanks, problem solved. <br>
+On Windows, installed driver via: Control panel/Hardware&amp;sound/Device manager/Ports. press right click on "unknown" port and try auto problem detect. when this not helped , right click properties (on the port)  and browse Arduino driver Path to direct the auto installer again.<br>
+This solved the serial port (COM).  <br>
+</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="36bfedba09cf4cc8946d1e0f89cf796b">			<a name="36bfedba09cf4cc8946d1e0f89cf796b"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/ACicchi.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">ACicchi</span> <span class="commentdate">5/22/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi meirbns,<br>
+thanks for your latest comment. It will be also useful to other users :)<br>
+<br>
+AC</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="d745e32d3dd1416a80fdbab1965d2676">			<a name="d745e32d3dd1416a80fdbab1965d2676"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">robertorossi</span> <span class="commentdate">8/11/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi A Cicchi - my Mega 2560 doesn't open a com port in the device manager - you can see the USB devices where it shows the Mega 2560 and the drivers are update.<br>
+What in the board could be damaged? I reinstalled the bootloader and still no com port - The other 2 Mega boards I have work fine - any way of reviving this board?<br>
+Thanks <br>
+Roberto</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="89cdc813d2b94ed0ab4aeb9fcdea325a">			<a name="89cdc813d2b94ed0ab4aeb9fcdea325a"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">ankitdaf</span> <span class="commentdate">8/12/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Maybe you've fried the 32u4 somehow.. What happens when you press the Reset button ?</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div></div></div><div class="post" id="817bf13a16b7402fb9cf264e26b0df4e">			<a name="817bf13a16b7402fb9cf264e26b0df4e"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">Roberto_Nogueira</span> <span class="commentdate">5/25/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">I can´t install Mega in win 7-64. There is a problem with driver signature. It works fine with win XP but my main computer runs win7-64. Any sugestion?</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="925e00bd54284b14acd2627e2ed2c504">			<a name="925e00bd54284b14acd2627e2ed2c504"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/ACicchi.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">ACicchi</span> <span class="commentdate">5/27/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi Roberto,<br>
+which ide version are you using? I suggest you the 1.0.5. However, have you already tried to uninstall and install the drivers again?<br>
+<br>
+AC</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="061dd22900974cd99ddf959b479a9a4a">			<a name="061dd22900974cd99ddf959b479a9a4a"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/JedrekProGamer.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">JedrekProGamer</span> <span class="commentdate">6/5/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">How much current is going from 5V pins?</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="4a68a5d42d3a43dd961f3563383abefe">			<a name="4a68a5d42d3a43dd961f3563383abefe"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/ACicchi.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">ACicchi</span> <span class="commentdate">6/7/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi JedrekProGamer,<br>
+these are general current values for Arduino Mega:<br>
+<br>
+DC Current per I/O Pin ......... 40.0 mA <br>
+DC Current VCC and GND Pins......200.0 mA<br>
+<br>
+If you connect an external power supply to the DC plug, the 5V pin can provide 800mA. Maximum 200mA go to the Atmega, other 600mA are available for other tasks.<br>
+<br>
+AC</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div><div class="post" id="463962d049874bba987578ac1c620fc3">			<a name="463962d049874bba987578ac1c620fc3"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">Too_Many_Tools</span> <span class="commentdate">6/9/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi,<br>
+<br>
+Could someone direct me to a discussion or info discussing ALL the DIFFERENCES between the Arduino MEGA ADK and the Arduino MEGA 2560 boards? Thanks<br>
+<br>
+</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="4042bfa5daba42cc9d610ecbd45162ab">			<a name="4042bfa5daba42cc9d610ecbd45162ab"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">tarekali</span> <span class="commentdate">6/15/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">can i replace Ardupilot mega with arduino mega2560  <br>
+R3 and upload the APM rover program on the arduino mega instead</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="7374c131485444219a7ec7a0bc76dd53">			<a name="7374c131485444219a7ec7a0bc76dd53"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/ACicchi.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">ACicchi</span> <span class="commentdate">6/17/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi tarekali,<br>
+unluckily Ardupilot it's not an Arduino product. You could post your question in our official forum (http://forum.arduino.cc/) or ask directly to the Ardupilot manufacturer.<br>
+<br>
+Regards,<br>
+AC</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div><div class="post" id="df2db21b042241419eaa6518cc328f36">			<a name="df2db21b042241419eaa6518cc328f36"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/dracocarathyr.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">dracocarathyr</span> <span class="commentdate">6/16/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi, I am new to Arduino and bought an Arduino Mega 2560. I am wanting to know what the max/min and recommended amperage is for a wall charger for this board.<br>
+<br>
+Thanks,<br>
+<br>
+Dracō</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="2e4db1f156794962957d900a0a3d7b45">			<a name="2e4db1f156794962957d900a0a3d7b45"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/dracocarathyr.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">dracocarathyr</span> <span class="commentdate">6/16/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">never mind. i did not read.</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="f86952abdcb54dab862a673d580b4114">			<a name="f86952abdcb54dab862a673d580b4114"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/dracocarathyr.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">dracocarathyr</span> <span class="commentdate">6/16/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">ok i do not think the post above actually answers my question about max/min and recommended amperage<br>
+<br>
+sorry   </p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div><div class="post" id="a4bd405b78ef420db1c3a74643720abf">			<a name="a4bd405b78ef420db1c3a74643720abf"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/ACicchi.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">ACicchi</span> <span class="commentdate">6/17/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi Draco,<br>
+the maximum amperage is managed from the voltage regulator. So, if you use the recommended input voltage of 7-12V, the max current will always be of 800mA.<br>
+<br>
+AC</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="4af2e48d0b65432f95ab63ea22ab77e8">			<a name="4af2e48d0b65432f95ab63ea22ab77e8"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/dracocarathyr.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">dracocarathyr</span> <span class="commentdate">6/17/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Ok. Will do. <br>
+<br>
+Thank you</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="9163eab6608b4f67908a0aa589cfa520">			<a name="9163eab6608b4f67908a0aa589cfa520"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/dracocarathyr.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">dracocarathyr</span> <span class="commentdate">6/17/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">so since it needs 40mA per I/O pin and there are 54 I/O pins that totals to 2160mA, plus the 50mA for the 3.3v. that gives a grand total of 2210mA. <br>
+<br>
+that is where I am stuck. <br>
+2210mA does not equal 800mA<br>
+<br>
+again I am new at this<br>
+<br>
+thanks</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="9ab5917235b04ea6b3b06be6672cfbc6">			<a name="9ab5917235b04ea6b3b06be6672cfbc6"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/ACicchi.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">ACicchi</span> <span class="commentdate">6/18/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi Draco,<br>
+yes, as i wrote on the previous comment, maximum 200mA go to the Atmega, other 600mA are available for other tasks. This means that, for example, if you are using 15 pins (with the maximum amperage: 40mA) you will lost the chance to use the other 39... If each pin doesn't use 40mA but less, you can use more pins at the same time.<br>
+<br>
+AC</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="a1bfa71b995941068bf33065382de740">			<a name="a1bfa71b995941068bf33065382de740"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/dracocarathyr.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">dracocarathyr</span> <span class="commentdate">6/18/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Ok, now that makes a little more sense.<br>
+<br>
+so then there is no way to use all the pins<br>
+<br>
+thanks again</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="ca061b3141b34a4db335bed3f522eadd">			<a name="ca061b3141b34a4db335bed3f522eadd"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/ACicchi.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">ACicchi</span> <span class="commentdate">6/19/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">It is possible just if all the pins don't use all the 40mA available for each one.<br>
+<br>
+You're welcome :)<br>
+<br>
+AC</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div></div></div></div></div></div></div></div></div><div class="post" id="35cc8f431390469cbfe15b4656348626">			<a name="35cc8f431390469cbfe15b4656348626"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">crazyglinc</span> <span class="commentdate">6/24/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">blink blink blink, does this mega do anything else?</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="7bc3a733da3a46bd93333a69e2e0223a">			<a name="7bc3a733da3a46bd93333a69e2e0223a"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">crazyglinc</span> <span class="commentdate">6/24/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">win7 64</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="ed6c64448ab8459284bd1d912ca05de5">			<a name="ed6c64448ab8459284bd1d912ca05de5"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/ACicchi.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">ACicchi</span> <span class="commentdate">6/25/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi crazyglinc,<br>
+what do you mean? Does the board not work with other sketches?<br>
+<br>
+AC</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div></div></div><div class="post" id="1445ce8e0c7b4b2aaf8c62298c3e5cb0">			<a name="1445ce8e0c7b4b2aaf8c62298c3e5cb0"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">bfulford</span> <span class="commentdate">8/5/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi, <br>
+According to this product description, there are two external interrupts of type 0 on D2. But in the note “How to use the GSM shield with Arduino Leonardo and Arduino Mega” (http://arduino.cc/en/Guide/GSMShieldLeonardoMega), “The Leonardo and Mega do not have interrupt capabilities on pin 2.” What am I missing? This note describes how to use a jumper but also mentions modifying the GSM3SoftwareSerial.cpp file to specify an alternate interrupt pin. Does this mean that I could put an interrupt on D2 instead of using a jumper? Thanks for your help.<br>
+</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="a05303ca3b4f4a81a600fb3c280f8819">			<a name="a05303ca3b4f4a81a600fb3c280f8819"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">Federico_Vanzati</span> <span class="commentdate">8/7/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi,<br>
+<br>
+the SoftwareSerial library makes use only of the Pin Change interrupt pins (PCINT) that are less specialized than the full interrupt pins, that are very few, and are managed in a different way from them. All the pins of the ATmega328 has PCINT functionality, instead on the Leonardo and on the Mega2560 only on certain pins have it, that's why you need to change the GSM_TX pin. <br>
+<br>
+The GSM3SoftwareSerial.cpp is already configured to accept the GSM_TX signal on the digital pin 10 on the Arduino Mega2560. Because there are other PCINTs available you are allowed to change this pin if you want to use the pin 10 in another way.<br>
+To see the list of all the pins with the PCINT feature I suggest you to consult the table on the Mega2560 pin mapping page:<br>
+http://arduino.cc/en/Hacking/PinMapping2560<br>
+</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div><div class="post" id="e8dcb3aebbda4a85a9e8cb832d1d28da">			<a name="e8dcb3aebbda4a85a9e8cb832d1d28da"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">schiavanoelettro1</span> <span class="commentdate">8/30/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Good afternoon to everyone.<br>
+I'm trying to use Serial port #1 instead Serial port #0 on my Arduino Mega 2560 and .... it works only if USB cable is pluged in my PC. What is the cause? Please, help me.</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="f610bd11467b4cb3b7f8216900990934">			<a name="f610bd11467b4cb3b7f8216900990934"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/Angelo9999.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">Angelo9999</span> <span class="commentdate">9/1/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hello schiavanoelettro1,<br>
+Have you connected grounds of both boards together?<br>
+If not try to connect them in order to have the same ground.<br>
+<br>
+Regards</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div><div class="post" id="788d20f5fa0f40e9b267186471dd224f">			<a name="788d20f5fa0f40e9b267186471dd224f"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">b2x_</span> <span class="commentdate">9/7/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hello.  I've been using arduino boards for a couple years now for robotics and 3d printers, and just wanted to say that I really love these little things.  You all have done a great job and have a great product here!</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="5ee85780bf874e01b28b7eebbbd9eead">			<a name="5ee85780bf874e01b28b7eebbbd9eead"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">jeffjangcanan</span> <span class="commentdate">9/10/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">I noticed that the Eagle PCB files for R3 are not posted. (The power connector still has 6 pins) Can you please update? Thanks.</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="8b3683647651458ab6570cd1ccfa31cc">			<a name="8b3683647651458ab6570cd1ccfa31cc"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">fifah_kj</span> <span class="commentdate">9/26/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi! I wonder if arduino GSM shield is compatible with arduino mega2560? I am making a project that requires arduino to send a notification via email and also sms. Is  arduino GSM suitable for that purpose? Thanks.</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="2a0cc2c2cc6c4dfd861c3cbe5493458a">			<a name="2a0cc2c2cc6c4dfd861c3cbe5493458a"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/a_guadalupi.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">a_guadalupi</span> <span class="commentdate">9/26/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Yes they are!</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="046f3707effb4388bbd7b8c7641ef050">			<a name="046f3707effb4388bbd7b8c7641ef050"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">fifah_kj</span> <span class="commentdate">9/28/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Sorry, but please bare with me. I'm new to Arduino. In you opinion, which shield should I use to send email and also sms, GSM or Ethernet? Can the shield send sms and email to different numbers? For example, when sensor 1 is activated, sms will be sent to person no. 1. Next, if sensor 2 is activated, sms will be sent to person no. 2 and so on.<br>
+<br>
+Sorry for the long question. Thanks.</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div></div></div><div class="post" id="d2ce1c8d327340a3822e9574997ae985">			<a name="d2ce1c8d327340a3822e9574997ae985"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">raven_squire</span> <span class="commentdate">11/5/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">What are the two pins on the top of the Digital header that are not labeled? Are they ground? Are the two pins on the bottom of the digital header the seam thing (only one is labeled ground)?</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="e4174537f3724ce7abd84b4bb9dfc7e0">			<a name="e4174537f3724ce7abd84b4bb9dfc7e0"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">n2uck</span> <span class="commentdate">11/11/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">I get power from the USB, but not the jack.  Polarity is correct.  Before I start with the voltmeter, any suggestion where I should start?</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="f019e093f17640ef903effdf31f3b3d9">			<a name="f019e093f17640ef903effdf31f3b3d9"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">jeffjangcanan</span> <span class="commentdate">11/14/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">I have a vendor claiming that the 2560 he shipped to us is a Rev3  although it is not indicated on the silkcreen. Simple question, are all R3's marked as such? Thanks. </p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="3d68a57055914132b92a7ac64d8bc42d">			<a name="3d68a57055914132b92a7ac64d8bc42d"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">TeslaControl</span> <span class="commentdate">11/15/2013</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">I've just bought this board but I am disappointed with the implementation of the timers:<br>
+Why have pin T1, T3 and T4 been left out of the wiring? These are extremely useful pins if you want to do fast and precise triggers using external signals.  <br>
+Has anyone tried (successfully?) to do manual soldering to breakout these pins?<br>
+</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="a8423a4893c24ce8bf2d232f52fd2657">			<a name="a8423a4893c24ce8bf2d232f52fd2657"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">monbb</span> <span class="commentdate">2/7/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">I recently purchased an Arduino Mega 2560 R3 from an official distributor. However, the front and back of the board that I got do not look like the pictures posted at this website. My board looks like the pictures at this link: https://www.sparkfun.com/products/11061<br>
+<br>
+Did I not get a genuine board? Or, my board is not a R3 layout?</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="d495ec1c977e472db29c6de073f5aa6a">			<a name="d495ec1c977e472db29c6de073f5aa6a"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">richphysics</span> <span class="commentdate">4/27/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">I am new to Arduino. Should I buy the Arduino uno or the Arduino Mega 2560 R3?  If I understand right the 2560 does the same things as the uno but has more potential.  Is this right?</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="dd7ed703691b4503bb63628fc47fd73e">			<a name="dd7ed703691b4503bb63628fc47fd73e"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/jacopo99.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">jacopo99</span> <span class="commentdate">5/21/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi, you can first buy an Arduino UNO, because the mega is too complex for a first contact with our World. ;)<br>
+Best regards </p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div><div class="post" id="0dbd05c32beb477a998351e42f452410">			<a name="0dbd05c32beb477a998351e42f452410"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">armahan</span> <span class="commentdate">5/12/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">hello everybody<br>
+i gat a question, i am making a quadropter and i don´t know if i can use the Li-PO battery for the arduino, the Li-PO battery is of 11v and 2.2A but i am reading a lot and i am not sure if is safe use it, so, anybady can tell me if is 100% safe use it i appreciate it.<br>
+</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="09d298bda6c14b478713324c42055fb0">			<a name="09d298bda6c14b478713324c42055fb0"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/jacopo99.jpg" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">jacopo99</span> <span class="commentdate">5/21/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Please use the forum ;)</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div><div class="post" id="6b40d4f4cfbc4a79b1fb519d7f96dd26">			<a name="6b40d4f4cfbc4a79b1fb519d7f96dd26"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">Satyaban1959</span> <span class="commentdate">5/21/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Sir I am a member of this site and have a small question. I have the comprehensive book "Arduino Cookbook". But neither from the Book itself or from most of sites do not mention where to paste the code. For example I want to display the system time on the LCD. So I want to know whether the code (if got from the net or created by myself (since I have an idea on C++)) should be uploaded under Display Window, Blink Window or Liquidcrystal or anything else or I shall post it under the sketch window and later save it. Also guide me how to save a arduino code. Additionally, I want to know whether there is any book for absolute beginners i.e. from connection of Arduino Pins to Breadboard with explanation of the code and finally pasting it with screenshots. If there is such a book, kindly inform me in my email address for which I shall ever be grateful. Regards and Thanks</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="e8f6b828fb1f4a468ebd20ee198cac05">			<a name="e8f6b828fb1f4a468ebd20ee198cac05"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">Marzogh</span> <span class="commentdate">8/6/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">I'd recommend you take a look at the 'Getting started' section of this website here --&gt; http://arduino.cc/en/Guide/HomePage<br>
+<br>
+If you're looking for a book, the Arduino cookbook is fantastic. However if that is not your cup of tea, then I'd recommend 'Exploring Arduino' by Jeremy Blum.</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div><div class="post" id="3a200442cfcf444091c6dff3b619c3af">			<a name="3a200442cfcf444091c6dff3b619c3af"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">2k14prasad</span> <span class="commentdate">5/26/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hell,<br>
+I have a problem in arduinomega2560 r3 board. My board pin 21 and pin 20 attach Interrupt are not working. If you have any solution please tell me. Thanks</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="7379d33b9c544c2bb4dcafdfb1f2ba44">			<a name="7379d33b9c544c2bb4dcafdfb1f2ba44"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">GianlucaStk</span> <span class="commentdate">6/10/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Me too: pin 20 &amp; pin 21 are out. For example: with Button sketch (buttonPin = 20 or 21) the led is always on (with the other pin of course this does not happen). The interrupts on 20 &amp; 21 don't work.</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div><div class="post" id="b962727412c148ce85eb5433897df921">			<a name="b962727412c148ce85eb5433897df921"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">Kylejardine</span> <span class="commentdate">6/17/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Any help guys &gt; please take a look and let me know. <br>
+<br>
+error : avrdude: stk500v2_ReceiveMessage(): timeout<br>
+<br>
+The full details <br>
+http://pastebin.com/HTRCCGwQ</p>			<div class="clearer"></div>		<div class="subcomments"></div></div><div class="post" id="ac051eddea674375b6235265460e1d7f">			<a name="ac051eddea674375b6235265460e1d7f"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">stavroshouiris</span> <span class="commentdate">7/3/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">hi jest want to ask a simple question so where it says DC Current per I/O Pin	40 mA is how much it provides max or is it how much it can take max???</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="fb501b4df04d43be9495f875cc7e9d44">			<a name="fb501b4df04d43be9495f875cc7e9d44"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">ankitdaf</span> <span class="commentdate">7/9/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">That is indeed the maximum, details here http://playground.arduino.cc/Main/ArduinoPinCurrentLimitations</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div><div class="post" id="ccb9533bf88c47fe989824413c80a60c">			<a name="ccb9533bf88c47fe989824413c80a60c"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">aahhhpizzzz</span> <span class="commentdate">7/7/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi<br>
+Is there a type of battery or portable charger that can power up the arduino for 24 hours?</p>			<div class="clearer"></div>		<div class="subcomments"><div class="post" id="0ea00b1d5b68457c8c90c3a9eb2dc8ac">			<a name="0ea00b1d5b68457c8c90c3a9eb2dc8ac"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">stavroshouiris</span> <span class="commentdate">7/7/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">That depends on how much power the arduino is using like how many leds you are powering anyway to make things simple what i would do is take maybe like 3 or 4 9 volt batteries and connect the negatives with the negatives and the positives with the positives then connect the negative wire that all the negatives are connected to ,to ground and then positive to the vin pin of the arduino if you don't know what the vin pin is its a pin that connects to the voltage regulator of the arduino so you do not have to wore about the voltage being more the 5v so basically you could use 3 to 4, 9 volt batteries or you could jest get a 12v battery<br>
+Warning: do not connect the 9v batteries parallel meaning which means don't connect the positive lead of the battery to the negative of the other battery because if you were to do this with lets say 4 9volt batteries then you would get 36volts which is to much for the regulator and will burn it.Hope that helped.</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div></div><div class="post" id="61d992e307cd438cb25318463bea4b00">			<a name="61d992e307cd438cb25318463bea4b00"></a>			<div class="posthead">				<p class="postericon">					<img width="30" height="30" src="./Arduino - ArduinoBoardMega2560_files/user.png" onerror="this.onerror = null; this.src = &#39;http://arduino.cc/tools/assets/comments/images/user.png&#39;">				</p>				<p class="userinfo"><span class="commentauthor">dmilton2004</span> <span class="commentdate">8/18/2014</span></p><p class="commentbuttons">&nbsp;</p></div>			<p class="commentbody">Hi,<br>
+I just got my MEGA2560 r3 today and I had to search around to ix the upload problem. I am using v1.0.5 of the IDE and the problem was because the upload protocol was set to 'wiring'. I had to set it to stk500v2 and that was solved! :) <br>
+<br>
+Love it as much as my UNO r3!</p>			<div class="clearer"></div>		<div class="subcomments"></div></div></div><div id="loginalert">You must be logged in to post a comment.</div></div>
+</div>
+
+				
+				<!-- AddThis Button Style BEGIN -->
+<style>
+  .addthis_toolbox {
+    margin: 2em 0 1em;
+  }
+  .addthis_toolbox img {
+    float: left;
+    height: 25px;
+    margin-right: 10px;
+    width: auto;
+  }
+  .addthis_toolbox .social-container {
+    float: left;
+    height: 27px; 
+    width: auto; 
+  }
+  .addthis_toolbox .social-container .social-content {
+    float: left;
+    margin-top: 2px;
+    max-width: 0;
+    overflow: hidden;
+    -moz-transition: max-width .3s ease-out;
+    -webkit-transition: max-width .3s ease-out;
+    -o-transition: max-width .3s ease-out;
+    transition: max-width .3s ease-out;
+  }
+  .addthis_toolbox .social-container:hover .social-content {
+    max-width: 100px;
+    -moz-transition: max-width .2s ease-in;
+    -webkit-transition: max-width .2s ease-in;
+    -o-transition: max-width .2s ease-in;
+    transition: max-width .2s ease-in;
+  }
+  .addthis_toolbox .social-container .social-content a {
+    float: left;
+    margin-right: 5px;
+  }
+
+  .addthis_toolbox h3 {
+    font-size: 24px;
+    text-align: left;
+  }
+</style>
+<!-- AddThis Button Style END -->
+<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style">
+  <h3>Share</h3>
+  <!-- FACEBOOK -->
+  <div class="social-container">
+    <img src="./Arduino - ArduinoBoardMega2560_files/facebook.png">
+    <div class="social-content">
+      <a class="addthis_button_facebook_like at300b" fb:like:layout="button_count"><div class="fb-like fb_iframe_widget" data-ref=".U_fc1XZOTKw.like" data-layout="button_count" data-show_faces="false" data-action="like" data-width="90" data-font="arial" data-href="http://arduino.cc/en/Main/ArduinoBoardMega2560" data-send="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=172525162793917&amp;font=arial&amp;href=http%3A%2F%2Farduino.cc%2Fen%2FMain%2FArduinoBoardMega2560&amp;layout=button_count&amp;locale=en_US&amp;ref=.U_fc1XZOTKw.like&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=90"><span style="vertical-align: bottom; width: 81px; height: 20px;"><iframe name="f5b4dd244" width="90px" height="1000px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./Arduino - ArduinoBoardMega2560_files/like.htm" style="border: none; visibility: visible; width: 81px; height: 20px;" class=""></iframe></span></div></a>
+    </div>
+  </div>
+  <!-- TWITTER -->
+  <div class="social-container">
+    <img src="./Arduino - ArduinoBoardMega2560_files/twitter.png">
+    <div class="social-content">
+      <a class="addthis_button_tweet at300b"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./Arduino - ArduinoBoardMega2560_files/tweet_button.1408655446.htm" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 110px; height: 20px;"></iframe></a>
+    </div>
+  </div>
+  <!-- PINTEREST -->
+  <div class="social-container">
+    <img src="./Arduino - ArduinoBoardMega2560_files/pinterest.png">
+    <div class="social-content">
+      <a class="addthis_button_pinterest_pinit at300b" pi:pinit:url="http://www.addthis.com/features/pinterest" pi:pinit:media="http://www.addthis.com/cms-content/images/features/pinterest-lg.png"><iframe frameborder="0" role="presentation" scrolling="no" allowtransparency="true" scrollbars="no" style="width:40px; height:25px;" src="./Arduino - ArduinoBoardMega2560_files/pinit022.htm"></iframe></a>
+    </div>
+  </div>
+  <!-- G+ -->
+  <div class="social-container">
+    <img src="./Arduino - ArduinoBoardMega2560_files/gplus.png">
+    <div class="social-content">
+      <a class="addthis_button_google_plusone at300b" g:plusone:size="medium"><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1408752856699" name="I0_1408752856699" src="./Arduino - ArduinoBoardMega2560_files/fastbutton.htm" data-gapiattached="true" title="+1"></iframe></div></a>
+    </div>
+  </div>
+
+  <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
+  <script type="text/javascript" src="./Arduino - ArduinoBoardMega2560_files/addthis_widget.js"></script><div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;"><iframe id="_atssh878" title="AddThis utility frame" src="./Arduino - ArduinoBoardMega2560_files/sh171.htm" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0px; left: 0px; top: 0px;"></iframe></div><script type="text/javascript" src="./Arduino - ArduinoBoardMega2560_files/core151.js"></script>
+<div class="atclear"></div></div>
+<!-- AddThis Button END -->
+
+			</div> <!-- eof pagetext -->			
+	
+	</div> <!-- eof page -->
+		
+	<!--PageFooterFmt-->
+	<div id="pagefooter">
+		<div id="pagefooter" class="pagefooter">
+  <div class="row">
+    <div class="large-8 eight columns">
+      <div class="large-4 four columns newsletter-box">
+        <!-- Begin MailChimp Signup Form -->
+        <h6>Newsletter</h6>
+        <form action="http://arduino.us5.list-manage.com/subscribe/post?u=0140d17584d1c002bcd94d0e8&id=69a7d1abe4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+          <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter your email to sign up" required="">
+          <i class="icon-right-small"></i>
+          <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="newsletter-button">
+        </form>
+        <!--End mc_embed_signup-->
+      </div>
+      <div class="clearfix"></div>
+      <ul class="inline-list">
+        <li class="monospace">©2014 Arduino</li>
+        <li><a href="http://arduino.cc/en/Main/CopyrightNotice">Copyright Notice</a></li>
+        <li><a href="http://arduino.cc/en/Main/ContactUs">Contact us</a></li>
+      </ul>
+    </div>
+    <div class="large-4 four columns">
+      <ul id="arduinoSocialLinks" class="arduino-social-links">
+        <li>
+          <a href="https://twitter.com/arduino">
+            <img src="./Arduino - ArduinoBoardMega2560_files/twitter(1).png">
+          </a>
+        </li>
+        <li>
+          <a href="http://www.facebook.com/official.arduino">
+            <img src="./Arduino - ArduinoBoardMega2560_files/facebook(1).png">
+          </a>
+        </li>
+        <li>
+          <a href="https://plus.google.com/+Arduino">
+            <img src="./Arduino - ArduinoBoardMega2560_files/gplus(1).png">
+          </a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/arduino_cc">
+            <img src="./Arduino - ArduinoBoardMega2560_files/flickr.png">
+          </a>
+        </li>
+        <li>
+          <a href="http://youtube.com/arduinoteam">
+            <img src="./Arduino - ArduinoBoardMega2560_files/youtube.png">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+	</div>
+	<!--/PageFooterFmt-->
+	
+	  <!--[if gte IE 9]><!-->
+	  <script src="./Arduino - ArduinoBoardMega2560_files/foundation.min.js"></script>
+	  <script src="./Arduino - ArduinoBoardMega2560_files/foundation.topbar.custom.js"></script>
+	  <script>
+	    $(document).foundation();
+	  </script>
+	  <!--<![endif]-->
+	  <!--[if IE 8]>
+	  <script src="http://arduino.cc/js/foundation_ie8.min.js"></script>
+	  <script src="http://arduino.cc/js/ie8/jquery.foundation.orbit.js"></script>
+	  <script src="http://arduino.cc/js/ie8/jquery.foundation.alerts.js"></script>
+	  <script src="http://arduino.cc/js/app.js"></script>
+
+	  <script>
+	  $(window).load(function(){
+	    $("#featured").orbit();
+	  });
+	  </script> 
+	  <![endif]-->
+	
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-22581631-3']);
+	  _gaq.push(['_setDomainName', 'arduino.cc']);
+	  _gaq.push(['_trackPageview']);
+	
+	    (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+
+	<script>
+	  $(window).load(function(){
+	    $('a').each (function () {
+	      href = $(this).attr ('href');
+	      if (href.substring (0, 4) == 'http' && href.indexOf ('arduino.cc') == -1)
+	        $(this).attr ('target', '_blank');
+	    });
+	  });
+	</script>
+
+
+<div id="fb-root" class=" fb_reset"><script src="./Arduino - ArduinoBoardMega2560_files/all.js" async=""></script><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="f24d78e49" frameborder="0" allowtransparency="true" scrolling="no" src="./Arduino - ArduinoBoardMega2560_files/ping.htm" style="display: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Arduino - ArduinoBoardMega2560_files/ZIZ-G4f9LgK.htm" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Arduino - ArduinoBoardMega2560_files/ZIZ-G4f9LgK(1).htm" style="border: none;"></iframe></div></div></div><iframe name="oauth2relay376513562" id="oauth2relay376513562" src="./Arduino - ArduinoBoardMega2560_files/postmessageRelay.htm" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>
