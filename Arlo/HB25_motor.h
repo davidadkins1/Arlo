@@ -42,10 +42,10 @@ enum MOTOR_STATE
 
 typedef struct MOTOR_CONTROL_PARAMETERS
 {
-  enum MOTOR_SELECT 	Select;
-  enum MOTOR_STATE      State;
-  int16_t               SpeedSetting;
-  int16_t		RequestedSpeed;
+  enum MOTOR_SELECT    Select;
+  enum MOTOR_STATE     State;
+  int16_t              SpeedSetting;
+  int16_t              RequestedSpeed;
   //uint8_t             MotorCurrent_channel;
   //unsigned char       MotorEMFA_channel;
   //unsigned char       MotorEMFB_channel;
@@ -56,11 +56,12 @@ typedef struct MOTOR_CONTROL_PARAMETERS
   //unsigned int        MotorEMFB;
   //unsigned long       LastEMFTime;
   //unsigned long       EMFTime;
-  uint8_t		RequestedDirection;
-  uint32_t              RequestedDistance;
-  int16_t               CurrentSpeed;
-  uint8_t               CurrentDirection;
-  uint32_t              CurrentDistance;
+  uint8_t              RequestedDirection;
+  uint32_t             RequestedDistance;
+  int16_t              CurrentSpeed;
+  uint8_t              CurrentDirection;
+  uint32_t             CurrentDistance;
+  Servo                servo_setting;
 }xMotorControlParameters;
 
 /*
@@ -78,4 +79,5 @@ struct MOTOR_CONTROL_REQUESTS
   MOTOR_CONTROL_PARAMETERS right_motor;
 };
 #endif
+
 

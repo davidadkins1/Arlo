@@ -229,16 +229,16 @@ typedef struct _SENSOR_DATA
 	unsigned int	uiCliffFrontRightSignal;
 	unsigned int	uiCliffRightSignal;
 	unsigned char	ucDigitalInputs;
-	unsigned int	uiAnalogSignal;
+	WORD_VAL	uiAnalogSignal;
 	unsigned char	ucChargingSource;
 	enum OI_STATE 	ucOIMode;
 	unsigned char	ucSongNumber;
 	unsigned char	ucSongPlaying;
 	unsigned char	ucNumberofStreamPackets;
-	int				iRequestedVelocity;
-	WORD_VAL		iRequestedRadius;
-	WORD_VAL		iRequestedRightVelocity;
-	WORD_VAL		iRequestedLeftVelocity;
+	int		iRequestedVelocity;
+	WORD_VAL	iRequestedRadius;
+	WORD_VAL	iRequestedRightVelocity;
+	WORD_VAL	iRequestedLeftVelocity;
 }SENSOR_DATA;
 
 typedef union _SENSORS
@@ -375,4 +375,5 @@ typedef union _SENSORS
 #define Ubrr115200      9
 
 #endif
+
 

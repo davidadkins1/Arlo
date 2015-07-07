@@ -39,7 +39,7 @@ boolean vPDACmd( unsigned char cByteRxed)
       if( cByteRxed == 0x07 )
       {
         //#ifdef SERIAL_DEBUG
-        //Serial.println("PDA command 2");
+        //DebugPort.println("PDA command 2");
         //#endif
         cmdState = CMD_READ;
       }
@@ -51,8 +51,8 @@ boolean vPDACmd( unsigned char cByteRxed)
 
     case CMD_READ:
       cmdByte = cByteRxed;					// Store the command
-      //Serial.println("Hello");
-      //Serial.println(cmdByte);
+      //SerialPort.println("Hello");
+      //SerialPort.println(cmdByte);
       //Forward
       if( 'F' == cmdByte )					// Both motors forward
       {
@@ -112,7 +112,7 @@ boolean vPDACmd( unsigned char cByteRxed)
 	//
         //vUARTIOputsBT( BANNER );
         //xQueueSend( xSongQueue, ( void * ) &cmdByte, portMAX_DELAY  );
-        blueToothSerial.println("Hello");
+        //SerialPort.println("Hello");
 	cmdState = PREFIX_2;
         return true;
       }	
@@ -135,7 +135,7 @@ boolean vPDACmd( unsigned char cByteRxed)
       else if( 'S' == cmdByte )							// Both motors stop
       {
         vMotorDriveRequest( 0, 0, 0, REMOTE_CONTROL );
-        blueToothSerial.println("Stop");
+        //SerialPort.println("Stop");
 	cmdState = PREFIX_2;
         return true;
       }
@@ -144,7 +144,7 @@ boolean vPDACmd( unsigned char cByteRxed)
    default:
 	cmdState = PREFIX_2;
         return true;
-        blueToothSerial.println("Default");
+        //SerialPort.println("Default");
    break;
   }
   return false;
@@ -184,5 +184,6 @@ boolean vPDACmd( unsigned char cByteRxed)
 //			}
 //		}		
 }
+
 
 

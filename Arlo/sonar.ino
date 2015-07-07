@@ -37,7 +37,7 @@ void vSonarIO( void )
       // convert the time into a distance
       cm = duration / 29 / 2;
       sonar_timer = set_timer(200);
-      Serial.println(cm);
+      //SerialPort.println(cm);
       sonar_state = SONAR_DELAY;
     break;
 
@@ -96,7 +96,7 @@ void vSonarIO( void )
   {
     if( cm > 10 )
     {
-     //Serial.println(cm);
+     //SerialPort.println(cm);
       SonarServo.write(90);
       escapeState = NORMAL_CRUISE;
       //vTaskDelay( TMR3L * 8 + 500 );
@@ -109,6 +109,7 @@ void vSonarIO( void )
     }
   }
 }
+
 
 
 

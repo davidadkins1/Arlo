@@ -19,15 +19,17 @@
 #include "iocfg.h"
 
 /** C O N F I G U R A T I O N *************************************************/
+#define ENCODER_TIMEOUT 200
+//#define ENCODER_TEST
+//#define ROTATION_TEST
+
 //** M O T O R S ***********************************************************/
 
 /** Global Variables ********************************************************/
 //extern unsigned char g_script[48];
-//extern SENSORS g_sensorPacket;
+extern SENSORS sensorPacket;
 
-unsigned long g_odometer;
-
-/** Local Variables ********************************************************/
+/** Local Varibles ********************************************************/
 //static int velocityLeft[MAX_BEHAVIOR];
 //static int velocityRight[MAX_BEHAVIOR];
 
@@ -51,22 +53,34 @@ static DWORD_VAL current_distance;
 static DWORD_VAL distance_delta_accumulator;
 
 //Variables for RPM calculations        
-Servo left_motor;
-volatile boolean left_started;
-volatile unsigned long left_start_time;
-volatile unsigned long left_end_time;
-volatile unsigned long left_elapsed_time;
-volatile boolean left_timing_ready;
-unsigned long left_elapsed_time_mail;
+static Servo left_motor;
+static volatile boolean left_started;
+static volatile unsigned long left_start_time;
+static volatile unsigned long left_end_time;
+static volatile unsigned long left_elapsed_time;
+static volatile boolean left_timing_ready;
+static unsigned long left_elapsed_time_mail;
 
-Servo right_motor;
-volatile boolean right_started;
-volatile unsigned long right_start_time;
-volatile unsigned long right_end_time;
-volatile unsigned long right_elapsed_time;
-volatile boolean right_timing_ready;
-unsigned long right_elapsed_time_mail;
+static Servo right_motor;
+static volatile boolean right_started;
+static volatile unsigned long right_start_time;
+static volatile unsigned long right_end_time;
+static volatile unsigned long right_elapsed_time;
+static volatile boolean right_timing_ready;
+static unsigned long right_elapsed_time_mail;
 //static uint16_t rpm;//revolutions per minute
+
+//odometry
+static volatile int left_odometer_counter;
+static volatile int right_odometer_counter;
+static WORD_VAL left_odometer_mail;
+static WORD_VAL right_odometer_mail;
+static WORD_VAL left_odometer;
+static WORD_VAL right_odometer;
+static long odometer;
+static long distance_to_move;
+float angle_accumulator;
+float motion_accumulator;
 
 /*-----------------------------------------------------------*/
 static void motor_drive( struct MOTOR_CONTROL_REQUESTS *motor_parameters );
@@ -77,6 +91,7 @@ static void vMotorDriveRight( int speed, unsigned long distance );
 void left_encoder()
 {
   left_end_time = micros();
+  ++left_odometer_counter;
   
   if(left_started)
   {  
@@ -92,6 +107,7 @@ void left_encoder()
 void right_encoder()
 {
   right_end_time = micros();
+  ++right_odometer_counter;
   
   if(right_started)
   {  
@@ -103,62 +119,28 @@ void right_encoder()
   right_started = true;  
 } // end of shutter
 
-/*
-static void LeftMotorSpeed(int speed)//
-{
-  static int left_speed = 0;
-  
-  if(left_speed != speed)
-  {  
-    #ifdef SERIAL_DEBUG
-    //blueToothSerial.print(" Left Speed: ");
-    //blueToothSerial.println(speed);
-    #endif
-    analogWrite(LEFT_HB25_CONTROL, speed);//input a simulation value to set the speed
-    left_speed = speed;
-    LeftMotor->CurrentSpeed = speed;
-  }
-}
-
-static void RightMotorSpeed(int speed)//
-{
-  static int right_speed = 0;
-  
-  if(right_speed != speed)
-  {  
-    #ifdef SERIAL_DEBUG
-    //Serial.print("Right Speed: ");
-    //Serial.print(speed);
-    #endif
-    analogWrite(RIGHT_HB25_CONTROL, speed);//input a simulation value to set the speed
-    right_speed = speed;
-    RightMotor->CurrentSpeed = speed;
-  }
-}
-*/
 void motor_initialize( void )
 {
-  //LeftMotorSpeed( SPEED_0 );
-  //RightMotorSpeed( SPEED_0 );
- //left_motor.writeMicroseconds(1650);  // set servo to mid-point
-  //right_motor.writeMicroseconds(1350);  // set servo to mid-point
-  
   left_motor.attach(LEFT_HB25_CONTROL);
+  left_motor.writeMicroseconds(SERVO_ZERO);  // set servo to mid-point
+
+  right_motor.attach(RIGHT_HB25_CONTROL);
+  right_motor.writeMicroseconds(SERVO_ZERO);  // set servo to mid-point
+  
   left_started = false;
   left_timing_ready = false;
   attachInterrupt (0, left_encoder, RISING);
   
-  right_motor.attach(RIGHT_HB25_CONTROL);
   right_started = false;
   right_timing_ready = false;
   attachInterrupt (1, right_encoder, RISING);
   
-  left_motor.writeMicroseconds(SERVO_ZERO);  // set servo to mid-point
-  right_motor.writeMicroseconds(SERVO_ZERO);  // set servo to mid-point
-  //left_rotation_count = 0;
-  //right_rotation_count = 0; 
-  //last_left_count = 0;
-  //last_right_count = 0; 
+  left_odometer_counter = 0;
+  right_odometer_counter = 0;
+  left_odometer_mail.Val = 0;
+  right_odometer_mail.Val = 0;
+  left_odometer.Val = 0;
+  right_odometer.Val = 0;
   
   // Next setup the motor current measurement
 
@@ -199,8 +181,6 @@ void motor_initialize( void )
     LeftMotor->MotorEMFB = 0;
     #endif
   
-    //LeftMotor->Direction = LM_FORWARD_DISABLE;
-    //LeftMotor->CurrentDirection = LM_FORWARD_DISABLE;
     LeftMotor->RequestedDistance = 0;
   }
 		
@@ -226,13 +206,16 @@ void motor_initialize( void )
     RightMotor->MotorEMFB = 0;
     #endif
     
-    //RightMotor->Direction = RM_FORWARD_DISABLE;
-    //RightMotor->CurrentDirection = RM_FORWARD_DISABLE;
     RightMotor->RequestedDistance = 0;
   }	
 
+  odometer = 0;
+  distance_to_move = 0;
+  angle_accumulator = 0;
+  motion_accumulator = 0;
+  
   // Force Remote control
-  //vMotorDriveRequest( SPEED_0, SPEED_0, 0, REMOTE_CONTROL );
+  //vMotorDriveRequest( 200, -200, 0, CRUISE );
 }
 
 static void vArbitrate( void )
@@ -311,7 +294,6 @@ static void motor_drive( struct MOTOR_CONTROL_REQUESTS *motor_parameters )
 */
 }
 
-//#if 0
 /********************************************************************
 *    Function Name:	vMotorMonitor				    *
 *    Return Value:	none					    *
@@ -323,8 +305,12 @@ void vMotorMonitor( void )
 {
   static enum MOTOR_STATE motor_state = MOTOR_START;
   static unsigned long motor_timer;
+  static unsigned long left_motor_timer;
+  static unsigned long right_motor_timer;
   int left_speed_error;
   int right_speed_error;
+  WORD_VAL turn_delta;
+  DWORD_VAL delta_motion;
       
   switch(motor_state)
   {
@@ -346,29 +332,58 @@ void vMotorMonitor( void )
       left_started = false;
       right_started = false;
       interrupts();
+      left_odometer.sVal = 0;
+      right_odometer.sVal = 0;
+      odometer = 0;
+      angle_accumulator = 0;
+      motion_accumulator = 0;
+
+      left_motor_timer = set_timer(ENCODER_TIMEOUT);
+      right_motor_timer = set_timer(ENCODER_TIMEOUT);
       //vMotorDriveRequest( -270, 270, 440, CRUISE );
+#ifdef ROTATION_TEST
       vMotorDriveRequest(-128, 128, 0, CRUISE );
+#endif
+      //vMotorDriveRequest(128, 128, 440, CRUISE );
       //vMotorDriveRadius( -1, 270, 0, REMOTE_CONTROL );
       motor_state = MOTORS_RUNNING;
     break;
         
     case MOTORS_RUNNING:
-      if(left_timing_ready)
+      if((left_timing_ready) || time_out(left_motor_timer))
       {
-        noInterrupts();
-        left_timing_ready = false;
-        left_elapsed_time_mail = left_elapsed_time;
-        interrupts();
-    
-        // Calculate current speed
-        LeftMotor->CurrentSpeed = MM_PER_TICK / left_elapsed_time_mail;
+        if(left_timing_ready)
+        {
+          noInterrupts();
+          left_timing_ready = false;
+          left_elapsed_time_mail = left_elapsed_time;
+          left_odometer_mail.Val = left_odometer_counter;
+          left_odometer_counter = 0;
+          interrupts();
 
-        // If driving in reverse the speed is negative
+          // Calculate current speed
+          LeftMotor->CurrentSpeed = MM_PER_TICK / left_elapsed_time_mail;
+        }
+        else
+        {
+          // Timeout implies current speed = 0
+          LeftMotor->CurrentSpeed = 0;
+          left_odometer_mail.sVal = 0;
+        }
+        
+        // Restart the timer
+        left_motor_timer = set_timer(ENCODER_TIMEOUT);
+
+        // If driving in reverse the speed and distance is negative
         if(LeftMotor->SpeedSetting < SERVO_ZERO)
         {
-         LeftMotor->CurrentSpeed = -LeftMotor->CurrentSpeed;
+          LeftMotor->CurrentSpeed = -LeftMotor->CurrentSpeed;
+          left_odometer_mail.sVal = -left_odometer_mail.sVal;
         }
- 
+        //#ifdef SERIAL_DEBUG
+        //Serial.println (left_odometer_mail.sVal);
+        //#endif
+
         // For proportional control Error = SP - PV or Set Point - Process Variable
         // SP = requested speed
         // PV = measured speed
@@ -388,32 +403,49 @@ void vMotorMonitor( void )
           }
 
           left_motor.writeMicroseconds(LeftMotor->SpeedSetting);  // set servo to mid-point
-        
-          Serial.print (left_elapsed_time_mail);
-          Serial.print (", ");
-          Serial.print (LeftMotor->CurrentSpeed);
-          Serial.print (", ");
-          Serial.print (left_speed_error);
-          Serial.print (", ");
-          Serial.print ("Left motor set point ");
-          Serial.println (LeftMotor->SpeedSetting);
+          
+          #ifdef SERIAL_DEBUG
+          //DebugPort.print (left_elapsed_time_mail);
+          //DebugPort.print (", ");
+          //DebugPort.print (LeftMotor->CurrentSpeed);
+          //DebugPort.print (", ");
+          //DebugPort.print (left_speed_error);
+          //DebugPort.print (", ");
+          //DebugPort.print ("Left motor set point ");
+          //DebugPort.println (LeftMotor->SpeedSetting);
+          #endif
         }
       }
       
-      if(right_timing_ready)
+      if((right_timing_ready) || time_out(right_motor_timer))
       {
-        noInterrupts();
-        right_timing_ready = false;
-        right_elapsed_time_mail = right_elapsed_time;
-        interrupts();
+        if(right_timing_ready)
+        {
+          noInterrupts();
+          right_timing_ready = false;
+          right_elapsed_time_mail = right_elapsed_time;
+          right_odometer_mail.Val = right_odometer_counter;
+          right_odometer_counter = 0;
+          interrupts();
+        
+          // Calculate current speed
+          RightMotor->CurrentSpeed = MM_PER_TICK / right_elapsed_time_mail;
+        }
+        else
+        {
+          RightMotor->CurrentSpeed = 0;
+          right_odometer_mail.Val = 0;
+        }
     
-        RightMotor->CurrentSpeed = MM_PER_TICK / right_elapsed_time_mail;
+        // Restart the timer
+        right_motor_timer = set_timer(ENCODER_TIMEOUT);
    
         if(RightMotor->SpeedSetting < SERVO_ZERO)
         {
-         RightMotor->CurrentSpeed = -RightMotor->CurrentSpeed;
+          RightMotor->CurrentSpeed = -RightMotor->CurrentSpeed;
+          right_odometer_mail.sVal = -right_odometer_mail.sVal;
         }
- 
+
         // For proportional control Error = SP - PV or Set Point - Process Variable
         // SP = requested speed
         // PV = measured speed
@@ -433,16 +465,100 @@ void vMotorMonitor( void )
           }
 
           right_motor.writeMicroseconds(RightMotor->SpeedSetting);  // set servo to mid-point
-
-          Serial.print (right_elapsed_time_mail);
-          Serial.print (", ");
-          Serial.print (RightMotor->CurrentSpeed);
-          Serial.print (", ");
-          Serial.print (right_speed_error);
-          Serial.print (", ");
-          Serial.print ("Right motor set point ");
-          Serial.println (RightMotor->SpeedSetting);
+          
+          #ifdef SERIAL_DEBUG
+          //DebugPort.print (right_elapsed_time_mail);
+          //DebugPort.print (", ");
+          //DebugPort.print (RightMotor->CurrentSpeed);
+          //DebugPort.print (", ");
+          //DebugPort.print (right_speed_error);
+          //DebugPort.print (", ");
+          //DebugPort.print ("Right motor set point ");
+          //DebugPort.println (RightMotor->SpeedSetting);
+          #endif
         }
+      }
+      
+      if((0 != right_odometer_mail.sVal) && (0 != left_odometer_mail.sVal))
+      {
+        //Serial.print (right_odometer_mail.sVal);
+        //Serial.print (",");
+        //Serial.print (left_odometer_mail.sVal);
+        //Serial.print (",");
+        int current_odometer = ((right_odometer_mail.sVal + left_odometer_mail.sVal) / 2);
+        odometer += (current_odometer * SCALED_MM_PER_TICK);
+        
+        // Protect from interrupts
+        /*
+        noInterrupts();            
+        // The mm traveled per encoder count was scaled by 256 to deal with the fraction
+        // Here we truncate the fraction by just using the High Byte for the accumulation of mm traveled.
+        right_odometer.byte.LB = sensorPacket.sensor.iDistanceTraveled.byte.HB;
+        right_odometer.byte.HB = sensorPacket.sensor.iDistanceTraveled.byte.LB;
+        interrupts(); 
+        */
+        
+        int actualAngularMovement = (right_odometer_mail.sVal - left_odometer_mail.sVal);
+        //right_odometer.sVal += current_odometer;
+        
+        #ifdef SERIAL_DEBUG
+        //DebugPort.print(right_odometer_mail.sVal);
+        //DebugPort.print(" ");
+        //DebugPort.print(left_odometer_mail.sVal);
+        //DebugPort.print(" ");
+        //DebugPort.print(turn_delta.sVal);
+        //DebugPort.print(" ");
+        //DebugPort.println(right_odometer.sVal);
+        #endif
+
+        
+        noInterrupts();        
+        angle_accumulator += actualAngularMovement;
+        motion_accumulator += current_odometer;
+        
+       // Scale the encoder counts
+        //turn_delta.sVal = (int)(angle_accumulator * 1.974358974);
+        //delta_motion.sVal = (int)(motion_accumulator * SCALED_MM_PER_TICK);
+        turn_delta.sVal = angle_accumulator * 1.974358974;
+        delta_motion.sVal = motion_accumulator * SCALED_MM_PER_TICK;
+        
+        //Convert from little endian to big
+        sensorPacket.sensor.iAngleTraveled.byte.LB = turn_delta.byte.HB;
+        sensorPacket.sensor.iAngleTraveled.byte.HB = turn_delta.byte.LB;
+        //This divides the motion by 256 since SCALED_MM_PER_TICK is * 256
+        sensorPacket.sensor.iDistanceTraveled.byte.HB = delta_motion.byte.HB;
+        sensorPacket.sensor.iDistanceTraveled.byte.LB = delta_motion.byte.UB;
+        interrupts();
+        
+        left_odometer_mail.sVal = 0;
+        right_odometer_mail.sVal = 0;
+        
+#ifdef ROTATION_TEST        
+      if(turn_delta.sVal >= 360)
+      {
+        // Execute an immediate stop
+        vMotorDriveLeft(0,0);
+        vMotorDriveRight(0,0);
+        vMotorDriveRequest(0, 0, 0, REMOTE_CONTROL);
+      }
+#endif        
+      }
+      
+      if(0 != distance_to_move)
+      {
+        if(odometer >= distance_to_move)
+        {
+          // Execute an immediate stop
+          vMotorDriveLeft(0,0);
+          vMotorDriveRight(0,0);
+          vMotorDriveRequest(0, 0, 0, REMOTE_CONTROL);
+          distance_to_move = 0;
+        }
+      }
+
+      if((MOTORS_STOPPED == LeftMotor->State) && (MOTORS_STOPPED == RightMotor->State))
+      {
+        motor_state = MOTORS_STOPPED;
       }
     break;
         
@@ -450,7 +566,7 @@ void vMotorMonitor( void )
     break;
   }
 }
-//#endif
+
 
 #if 0
 unsigned int uiLeftCurrent( void )
@@ -484,6 +600,51 @@ int iVelocityRight( void )
   return RightMotor->CurrentSpeed;
 }
 
+static void vMotorDrive(int speed, MOTOR_CONTROL_PARAMETERS *motor)
+{
+  // If motor is stopping reset the motor state
+  if(0 == speed)
+  {
+    motor->State = MOTORS_STOPPED;
+  }
+
+  switch(motor->State)
+  {
+    case MOTORS_STOPPED:
+      motor->RequestedSpeed = speed;
+
+      // Kick start the speed to get the motor running.
+      motor->SpeedSetting = SERVO_ZERO + speed;
+      motor->servo_setting.writeMicroseconds(motor->SpeedSetting);  // set servo
+
+      if(0 != motor->RequestedSpeed)
+      {
+        motor->State = MOTORS_RUNNING;
+        #ifdef SERIAL_DEBUG
+        //DebugPort.print ("Left speed request ");
+        //DebugPort.print (motor->RequestedSpeed);
+        //DebugPort.print (", ");
+        //DebugPort.print ("Left motor set point ");
+        //DebugPort.println (motor->SpeedSetting);
+        #endif
+      }
+    break;
+    
+    case MOTORS_RUNNING:
+      if(speed != motor->RequestedSpeed)
+      {
+        motor->RequestedSpeed = speed;
+      }
+    break;
+  
+    case MOTOR_STALLED:
+    break;
+  
+    default:
+    break;
+  }
+}
+
 static void vMotorDriveLeft( int speed, unsigned long distance )
 {
   // If motors are stopping reset the motor state
@@ -496,12 +657,21 @@ static void vMotorDriveLeft( int speed, unsigned long distance )
   {
     case MOTORS_STOPPED:
       LeftMotor->RequestedSpeed = speed;
-      LeftMotor->SpeedSetting = SERVO_ZERO + speed / 2;
+      
+      // Kick start the speed to get the motor running.
+      LeftMotor->SpeedSetting = SERVO_ZERO + speed;
       left_motor.writeMicroseconds(LeftMotor->SpeedSetting);  // set servo
 
       if(0 != LeftMotor->RequestedSpeed)
       {
         LeftMotor->State = MOTORS_RUNNING;
+        #ifdef SERIAL_DEBUG
+        //DebugPort.print ("Left speed request ");
+        //DebugPort.print (LeftMotor->RequestedSpeed);
+        //DebugPort.print (", ");
+        //DebugPort.print ("Left motor set point ");
+        //DebugPort.println (LeftMotor->SpeedSetting);
+        #endif
       }
     break;
     
@@ -532,7 +702,7 @@ static void vMotorDriveRight( int speed, unsigned long distance )
   {
     case MOTORS_STOPPED:
       RightMotor->RequestedSpeed = speed;
-      RightMotor->SpeedSetting = SERVO_ZERO + speed / 2;
+      RightMotor->SpeedSetting = SERVO_ZERO + speed;
       right_motor.writeMicroseconds(RightMotor->SpeedSetting);  // set servo to mid-point
 
       if(0 != RightMotor->RequestedSpeed)
@@ -632,6 +802,7 @@ static void vMotorDriveRight( int speed, unsigned long distance )
 #endif
 }
 
+
 // Speed is in mm/sec
 void vMotorDriveRequest( int leftSpeed, int rightSpeed, long distance, enum BEHAVIORS behaviorID )
 {
@@ -658,7 +829,7 @@ void vMotorDriveRequest( int leftSpeed, int rightSpeed, long distance, enum BEHA
   motorControl[behaviorID].right_motor.RequestedSpeed = rightSpeed;
   motorControl[behaviorID].right_motor.RequestedDistance = distance;
   motorControl[behaviorID].BehaviorControl = behaviorID;
-  //odometer = distance;
+  distance_to_move = distance;
 }
 
 // radius:
@@ -668,6 +839,15 @@ void vMotorDriveRequest( int leftSpeed, int rightSpeed, long distance, enum BEHA
 //            negative speed is reverse, positive speed is forward
 void vMotorDriveRadius( int radius, int speed, unsigned long distance, enum BEHAVIORS behaviorID )
 {
+  #ifdef SERIAL_DEBUG
+  //DebugPort.print("Radius ");
+  //DebugPort.print(radius);
+  //DebugPort.print(" Speed ");
+  //DebugPort.print(speed);
+  //DebugPort.print(" Distance: ");
+  //DebugPort.println(distance);
+  #endif
+  
   if( (radius == 0) || (radius == (int)32767) || (radius == (int)-32768) )
   {
     vMotorDriveRequest( speed, speed, distance, behaviorID );
@@ -833,7 +1013,7 @@ void vMotorTurnHeading( int radius, int speed, unsigned int new_heading, enum BE
 void stop()//
 {
   #ifdef SERIAL_DEBUG
-  Serial.println("All stop");
+  //DebugPort.println("All stop");
   #endif
   analogWrite(RIGHT_HB25_CONTROL,SPEED_0);// Unenble the pin, to stop the motor. this should be done to avid damaging the motor. 
   analogWrite(LEFT_HB25_CONTROL, SPEED_0);
@@ -845,5 +1025,6 @@ void vReleaseControl( enum BEHAVIORS behaviorID )
 }
 
 /*-----------------------------------------------------------*/
+
 
 
