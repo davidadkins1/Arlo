@@ -270,7 +270,7 @@ void iRobotCmd( unsigned char cByteRxed )
                           DebugPort.println(debug_data.sVal);
                           #endif  
 			  sensorPacket.sensor.iDistanceTraveled.Val = 0;          // Reset motion accumulators
-			  sensorPacket.sensor.iAngleTraveled.Val = 0;             // after read
+			  sensorPacket.sensor.iAngleTraveled.sVal = 0;             // after read
                           angle_accumulator = 0;
                           motion_accumulator = 0;
 			}

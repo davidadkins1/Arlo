@@ -6,6 +6,7 @@ static unsigned long gyro_timer;
 void init_gyro(void)
 {
   gyro.init();
+  gyro.zeroCalibrate(200,10);//sample 200 times to calibrate and it will take 200*10ms
   gyro_timer = set_timer(30);
 }
 
