@@ -30,12 +30,7 @@ void uartio_intialize( void )
   setupDebugPort();
   #endif
 
-#ifndef BLUETOOTH_SUPPORTED
-  //wait 1s and flush the serial buffer
-  SerialPort.begin(57600);
-  delay(1000);  
-  SerialPort.flush();
-#endif
+  setup_control_port();
 }
 
 void vUARTRxControl()
@@ -63,9 +58,10 @@ void vUARTRxControl()
       else if(incomingByte > 127)
       {
         #ifdef SERIAL_DEBUG
-        DebugPort.print("Roomba command ");
-        DebugPort.print(incomingByte);
-        DebugPort.print(' ');
+        //DebugPort.print("Roomba command ");
+        //DebugPort.print(incomingByte);
+        //DebugPort.print(' ');
+        //DebugPort.write(incomingByte);
         #endif
         rx_task_state = IROBOT_CMD;
       }
@@ -99,29 +95,48 @@ boolean xUARTIOGetChar(byte port_number, byte *pcRxedChar, long timeout)
 #ifdef SERIAL_DEBUG
 void setupDebugPort()
 {
-  #ifdef BLUETOOTH_SUPPORTED
-  DebugPort.begin(38400); //Set BluetoothBee BaudRate to default baud rate 38400
-  DebugPort.print("\r\n+STWMOD=0\r\n"); //set the bluetooth work in slave mode
-  DebugPort.print("\r\n+STNA=ClipBoardBot\r\n"); //set the bluetooth name
-  DebugPort.print("\r\n+STPIN=0000\r\n");//Set SLAVE pincode"0000"
-  DebugPort.print("\r\n+STOAUT=1\r\n"); // Permit Paired device to connect me
-  DebugPort.print("\r\n+STAUTO=0\r\n"); // Auto-connection should be forbidden here
-  delay(2000); // This delay is required.
-  DebugPort.print("\r\n+INQ=1\r\n"); //make the slave bluetooth inquirable 
-  //DebugPort.println("The slave bluetooth is inquirable!");
-  //DebugPort.print("\r\n+STAUTO=1\r\n"); // Auto-connection
-  delay(2000); // This delay is required.
-  DebugPort.flush();
-  //SerialPort.print("\r\n+CONN=00,80,98,44,78,88\r\n"); // Auto-connection should be forbidden here
-  //DebugPort.print("\r\n+STAUTO=1\r\n"); // Auto-connection should be forbidden here
-  #else
+#ifdef BLUETOOTH_SUPPORTED
+  setup_bluetooth_port();
+#else
   DebugPort.begin(57600);
   delay(100);  
   DebugPort.flush();
-  #endif
-  //while(1);
+#endif
 }
 #endif
+
+#ifdef BLUETOOTH_SUPPORTED
+void setup_bluetooth_port()
+{
+  BluetoothPort.begin(38400);                               //Set BluetoothBee BaudRate to default baud rate 38400
+  BluetoothPort.print("\r\n+STWMOD=0\r\n");                 //set the bluetooth work in slave mode
+  BluetoothPort.print("\r\n+STNA=Charlie\r\n");             //set the bluetooth name
+  //BluetoothPort.print("\r\n+STPIN=0000\r\n");               //Set SLAVE pincode"0000"
+  BluetoothPort.print("\r\n+STOAUT=1\r\n");                    // Permit Paired device to connect me
+  BluetoothPort.print("\r\n+STAUTO=0\r\n");                    // Auto-connection should be forbidden here
+  delay(2000); // This delay is required.
+  BluetoothPort.print("\r\n+INQ=1\r\n");                       //make the slave bluetooth inquirable 
+  //BluetoothPort.println("The slave bluetooth is inquirable!");
+  //BluetoothPort.print("\r\n+STAUTO=1\r\n");                  // Auto-connection
+  delay(2000); // This delay is required.
+  BluetoothPort.flush();
+  //BluetoothPort.print("\r\n+CONN=00,80,98,44,78,88\r\n"); // Auto-connection should be forbidden here
+  //BluetoothPort.print("\r\n+STAUTO=1\r\n"); // Auto-connection should be forbidden here
+}
+#endif
+
+
+void setup_control_port()
+{
+#ifdef BLUETOOTH_CONTROL
+  setup_bluetooth_port();
+#else
+  //wait 1s and flush the serial buffer
+  SerialPort.begin(57600);
+  delay(1000);  
+  SerialPort.flush();
+#endif
+}
 
 /********************************************************************
 *    Function Name:  vUARTIOWrite                                	*

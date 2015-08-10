@@ -72,7 +72,7 @@ SENSORS sensorPacket =
   0x1F,     // Packet ID: 32 - Cargo Bay Digital Inputs
   0x0002,   // Packet ID: 33 - Cargo Bay Analog Signal (0x200 = null gyro value)
   0,        // Packet ID: 34 - Charging Sources Available
-  OI_OFF,   // Packet ID: 35 - OI Mode
+  OI_SAFE,  // Packet ID: 35 - OI Mode
   0,        // Packet ID: 36 - Song Number
   0,        // Packet ID: 37 - Song Playing
   0,        // Packet ID: 38 - Number of Stream Packets
@@ -125,20 +125,20 @@ void iRobotCmd( unsigned char cByteRxed )
     case CmdStart:
       sensorPacket.sensor.ucOIMode = OI_PASSIVE;
       #ifdef SERIAL_DEBUG
-      DebugPort.println("");
+      //DebugPort.println("");
       #endif
     break;
 		
     case CmdBaud:
       #ifdef SERIAL_DEBUG
-      DebugPort.println("");
+      //DebugPort.println("");
       #endif
     break;
 		
   case CmdControl:
     sensorPacket.sensor.ucOIMode = OI_SAFE;
     #ifdef SERIAL_DEBUG
-    DebugPort.println("");
+    //DebugPort.println("");
     #endif
   break;
 		
@@ -160,6 +160,7 @@ void iRobotCmd( unsigned char cByteRxed )
   break;
 		
   case CmdDrive:
+    // Read velocity word
     xUARTIOGetChar( NULL, &leLeft.byte.HB , comRX_BLOCK_TIME );
     #ifdef SERIAL_DEBUG
     //DebugPort.write(leLeft.byte.HB);
@@ -170,12 +171,13 @@ void iRobotCmd( unsigned char cByteRxed )
     xUARTIOGetChar( NULL, &leLeft.byte.LB, comRX_BLOCK_TIME );
     #ifdef SERIAL_DEBUG
     //DebugPort.write(leLeft.byte.LB);
-    DebugPort.print(leLeft.sVal);
-    DebugPort.print(',');
+    //DebugPort.print(leLeft.sVal);
+    //DebugPort.print(',');
     #endif
     sensorPacket.sensor.iRequestedLeftVelocity.byte.LB = leLeft.byte.LB;
     sensorPacket.sensor.iRequestedRightVelocity.byte.LB = leLeft.byte.LB;
-			
+
+    // Read radius word
     xUARTIOGetChar( NULL, &leRight.byte.HB, comRX_BLOCK_TIME );
     #ifdef SERIAL_DEBUG
     //DebugPort.write(leRight.byte.HB);
@@ -185,7 +187,7 @@ void iRobotCmd( unsigned char cByteRxed )
     xUARTIOGetChar( NULL, &leRight.byte.LB, comRX_BLOCK_TIME );
     #ifdef SERIAL_DEBUG
     //DebugPort.write(leRight.byte.LB);
-    DebugPort.println(leRight.sVal);
+    //DebugPort.println(leRight.sVal);
     #endif
     sensorPacket.sensor.iRequestedRadius.byte.LB = leRight.byte.LB;
 			
@@ -198,44 +200,45 @@ void iRobotCmd( unsigned char cByteRxed )
   case CmdLeds:
   break;
 		
-		case CmdSong:
-		    xUARTIOGetChar( NULL, &sensorPacket.sensor.ucSongNumber, comRX_BLOCK_TIME );
-		    sensorPacket.sensor.ucSongNumber = cmdByte;
-		    xUARTIOGetChar( NULL, &cmdByte, comRX_BLOCK_TIME );
-		    xUARTIOGetChar( NULL, &g_songs[cmdByte][0], comRX_BLOCK_TIME );
+  case CmdSong:
+	  xUARTIOGetChar( NULL, &sensorPacket.sensor.ucSongNumber, comRX_BLOCK_TIME );
+		sensorPacket.sensor.ucSongNumber = cmdByte;
+		xUARTIOGetChar( NULL, &cmdByte, comRX_BLOCK_TIME );
+		xUARTIOGetChar( NULL, &g_songs[cmdByte][0], comRX_BLOCK_TIME );
 			
-			for( i = 1; i < g_songs[cmdByte][0] * 2 + 1; i++ )
-			{
-			  xUARTIOGetChar( NULL, &g_songs[cmdByte][i], comRX_BLOCK_TIME ); 
-			}
-		break;
+		for( i = 1; i < g_songs[cmdByte][0] * 2 + 1; i++ )
+		{
+		  xUARTIOGetChar( NULL, &g_songs[cmdByte][i], comRX_BLOCK_TIME ); 
+		}
+	break;
 		
-		case CmdPlay:
-			xUARTIOGetChar( NULL, &sensorPacket.sensor.ucSongPlaying, comRX_BLOCK_TIME );
-			//xQueueSendToBack( xSongQueue, ( void * ) &sensorPacket.sensor.ucSongNumber, 0 );
-			xUARTIOGetChar( NULL, &i, comRX_BLOCK_TIME );
-			//xQueueSend( xSongQueue, ( void * ) &i, portMAX_DELAY  );
-		break;
+	case CmdPlay:
+	  xUARTIOGetChar( NULL, &sensorPacket.sensor.ucSongPlaying, comRX_BLOCK_TIME );
+		//xQueueSendToBack( xSongQueue, ( void * ) &sensorPacket.sensor.ucSongNumber, 0 );
+		xUARTIOGetChar( NULL, &i, comRX_BLOCK_TIME );
+		//xQueueSend( xSongQueue, ( void * ) &i, portMAX_DELAY  );
+	break;
 		
-		case CmdSensors:
-			i = xUARTIOGetChar( NULL, &cmdByte, comRX_BLOCK_TIME );
-                        #ifdef SERIAL_DEBUG
-			//DebugPort.write(cmdByte);
-                        //DebugPort.print(cmdByte);
-                        #endif
+	case CmdSensors:
+		i = xUARTIOGetChar( NULL, &cmdByte, comRX_BLOCK_TIME );
+    #ifdef SERIAL_DEBUG
+		//DebugPort.write(cmdByte);
+    //DebugPort.print(cmdByte);
+    #endif
 
 			if( cmdByte == (unsigned char)0 )
 			{
+        read_current_rotatation();
 				vUARTIOWrite(sensorPacket.byte, Sen0Size );
-                                #ifdef SERIAL_DEBUG
-                                debug_data.byte.LB = sensorPacket.sensor.iDistanceTraveled.byte.HB;
-                                debug_data.byte.HB = sensorPacket.sensor.iDistanceTraveled.byte.LB;
-                                DebugPort.println(debug_data.sVal);
-                                #endif  
+        #ifdef SERIAL_DEBUG
+        //debug_data.byte.LB = sensorPacket.sensor.iDistanceTraveled.byte.HB;
+        //debug_data.byte.HB = sensorPacket.sensor.iDistanceTraveled.byte.LB;
+        //DebugPort.println(debug_data.sVal);
+        #endif  
 				sensorPacket.sensor.iDistanceTraveled.Val = 0;          // Reset motion accumulators
 				sensorPacket.sensor.iAngleTraveled.sVal = 0;             // after read
-                          angle_accumulator = 0;
-                          motion_accumulator = 0;
+        angle_accumulator = 0;
+        motion_accumulator = 0;
 			}
 			else if( cmdByte == (unsigned char)1 )
 			{
@@ -243,11 +246,12 @@ void iRobotCmd( unsigned char cByteRxed )
 			}
 			else if( cmdByte == (unsigned char)2 )
 			{
+        read_current_rotatation();
 				vUARTIOWrite(&sensorPacket.byte[SenIRChar], Sen2Size);
 				sensorPacket.sensor.iDistanceTraveled.Val = 0;          // Reset motion accumulators
 				sensorPacket.sensor.iAngleTraveled.sVal = 0;             // after read
-                          angle_accumulator = 0;
-                          motion_accumulator = 0;
+        angle_accumulator = 0;
+        motion_accumulator = 0;
 			}
 			else if( cmdByte == (unsigned char)3 )
 			{
@@ -263,16 +267,21 @@ void iRobotCmd( unsigned char cByteRxed )
 			}
 			else if( cmdByte == (unsigned char)6 )
 			{
+        read_current_rotatation();
 			  vUARTIOWrite(&sensorPacket.byte[0], Sen6Size);
-                          #ifdef SERIAL_DEBUG
-                          debug_data.byte.LB = sensorPacket.sensor.iDistanceTraveled.byte.HB;
-                          debug_data.byte.HB = sensorPacket.sensor.iDistanceTraveled.byte.LB;
-                          DebugPort.println(debug_data.sVal);
-                          #endif  
+        #ifdef SERIAL_DEBUG
+        //for( i = 0; i < Sen6Size; i++ )
+        //{
+        //  DebugPort.write(sensorPacket.byte[i]); 
+        //}
+        //debug_data.byte.LB = sensorPacket.sensor.iDistanceTraveled.byte.HB;
+        //debug_data.byte.HB = sensorPacket.sensor.iDistanceTraveled.byte.LB;
+        //DebugPort.println(debug_data.sVal);
+        #endif  
 			  sensorPacket.sensor.iDistanceTraveled.Val = 0;          // Reset motion accumulators
 			  sensorPacket.sensor.iAngleTraveled.sVal = 0;             // after read
-                          angle_accumulator = 0;
-                          motion_accumulator = 0;
+        angle_accumulator = 0;
+        motion_accumulator = 0;
 			}
 		break;
 		
@@ -284,27 +293,27 @@ void iRobotCmd( unsigned char cByteRxed )
 		
 		case CmdDriveWheels:
 		  xUARTIOGetChar( NULL, &leRight.byte.HB, comRX_BLOCK_TIME );
-                  //#ifdef SERIAL_DEBUG
+      //#ifdef SERIAL_DEBUG
 		  //DebugPort.write(leRight.byte.HB);
-                  //#endif
+      //#endif
 		  sensorPacket.sensor.iRequestedRightVelocity.byte.HB = leRight.byte.HB;
 			
-	          xUARTIOGetChar( NULL, &leRight.byte.LB, comRX_BLOCK_TIME );
-                  //#ifdef SERIAL_DEBUG
+	    xUARTIOGetChar( NULL, &leRight.byte.LB, comRX_BLOCK_TIME );
+      //#ifdef SERIAL_DEBUG
 		  //DebugPort.write(leRight.byte.LB);
-                  //#endif
+      //#endif
 		  sensorPacket.sensor.iRequestedRightVelocity.byte.LB = leRight.byte.LB;
 			
 		  xUARTIOGetChar( NULL, &leLeft.byte.HB, comRX_BLOCK_TIME );
-                  //#ifdef SERIAL_DEBUG
+      //#ifdef SERIAL_DEBUG
 		  //DebugPort.write(leLeft.byte.HB);
-                  //#endif
+      //#endif
 		  sensorPacket.sensor.iRequestedLeftVelocity.byte.HB = leLeft.byte.HB;
 			
 		  xUARTIOGetChar( NULL, &leLeft.byte.LB, comRX_BLOCK_TIME );
-                  //#ifdef SERIAL_DEBUG
+      //#ifdef SERIAL_DEBUG
 		  //DebugPort.write(leLeft.byte.LB);
-                  //#endif
+      //#endif
 		  sensorPacket.sensor.iRequestedLeftVelocity.byte.LB = leLeft.byte.LB;
 
 		  //if(0 != sensorPacket.sensor.iRequestedLeftVelocity.Val)
@@ -314,34 +323,34 @@ void iRobotCmd( unsigned char cByteRxed )
 		  //{
 		  //}
 			
-                  #ifdef SERIAL_DEBUG
-                  DebugPort.print(' ');
-                  DebugPort.print(leRight.sVal);
-                  DebugPort.print(' ');
-                  DebugPort.println(leLeft.sVal);
-                  #endif			
+      #ifdef SERIAL_DEBUG
+      //DebugPort.print(' ');
+      //DebugPort.print(leRight.sVal);
+      //DebugPort.print(' ');
+      //DebugPort.println(leLeft.sVal);
+      #endif			
 		  
-                  vMotorDriveRequest( leLeft.sVal, leRight.sVal, 0, REMOTE_CONTROL );
+      vMotorDriveRequest( leLeft.sVal, leRight.sVal, 0, REMOTE_CONTROL );
 		break;
 		
 		case CmdOutputs:
-                        // TurtleBot bit 0 out is tied to bit 0 in for board detection
-                        xUARTIOGetChar( NULL, &digitalOutput, comRX_BLOCK_TIME );
+      // TurtleBot bit 0 out is tied to bit 0 in for board detection
+      xUARTIOGetChar( NULL, &digitalOutput, comRX_BLOCK_TIME );
                         
-                        // Bit 0 is used to power the Kinect power on and off in a turtlebot
-                        // I've used a Grove relay board.
-                        if(0 == (digitalOutput & 1))
-                        {
-                          digitalWrite(KINECT_POWER, LOW);
-                        }
-                        else
-                        {
-                          digitalWrite(KINECT_POWER, HIGH);
-                        }
+      // Bit 0 is used to power the Kinect power on and off in a turtlebot
+      // I've used a Grove relay board.
+      if(0 == (digitalOutput & 1))
+      {
+        digitalWrite(KINECT_POWER, LOW);
+      }
+      else
+      {
+        digitalWrite(KINECT_POWER, HIGH);
+      }
                         
-                        #ifdef SERIAL_DEBUG
-			DebugPort.write(digitalOutput);
-                        #endif
+      #ifdef SERIAL_DEBUG
+			//DebugPort.write(digitalOutput);
+      #endif
 		break;
 		
 		case CmdSensorList:
@@ -351,17 +360,16 @@ void iRobotCmd( unsigned char cByteRxed )
 		break;
 		
 		case CmdScript:
-			xUARTIOGetChar( NULL, &g_script[0], comRX_BLOCK_TIME );
+		  xUARTIOGetChar( NULL, &g_script[0], comRX_BLOCK_TIME );
 			
 			for( i = 1; i < (g_script[0] + 1); i++ )
 			{
 				xUARTIOGetChar( NULL, &g_script[i], comRX_BLOCK_TIME ); 
 			}
-			
 		break;
 		
 		case PlayScript:
-		    //xQueueSendToBack( xScriptQueue, ( void * ) script, 0 );
+		  //xQueueSendToBack( xScriptQueue, ( void * ) script, 0 );
 		break;
 		
 		case CmdDriveDistance:
@@ -412,6 +420,4 @@ void iRobotCmd( unsigned char cByteRxed )
 		break;
 	}
 }
-
-
 

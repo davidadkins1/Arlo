@@ -1,4 +1,4 @@
-/*****************************************************************************/
+ /*****************************************************************************/
 //  Function:    Cpp file for ITG3200 
 //  Hardware:    Grove - 3-Axis Digital Gyro
 //  Arduino IDE: Arduino-1.0
@@ -106,9 +106,9 @@ double ITG3200::getTemperature()
 /*          so as to calculate the angular velocity.        */
 void ITG3200::getXYZ(int16_t *x,int16_t *y,int16_t *z)
 {
-  *x = read(ITG3200_GX_H,ITG3200_GX_L)+x_offset;
-  *y = read(ITG3200_GY_H,ITG3200_GY_L)+y_offset;
-  *z = read(ITG3200_GZ_H,ITG3200_GZ_L)+z_offset;
+  *x = read(ITG3200_GX_H, ITG3200_GX_L) + x_offset;
+  *y = read(ITG3200_GY_H, ITG3200_GY_L) + y_offset;
+  *z = read(ITG3200_GZ_H, ITG3200_GZ_L) + z_offset;
 }
 /*Function: Get the angular velocity and its unit is degree per second.*/
 void ITG3200::getAngularVelocity(float *ax,float *ay,float *az)

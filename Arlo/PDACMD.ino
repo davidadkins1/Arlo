@@ -17,8 +17,15 @@
 extern SoftwareSerial blueToothSerial;
 #endif
 
+extern float angle_accumulator;
+//extern float rotation_accumulator;         // this is needed to avoid accumulating rounding error.
+extern float gyro_rate_monitor;
+
+
 enum CMD_STATE { PREFIX_2, CMD_READ, READ_SPEED_1, READ_SPEED_2 };
+static char motor_string[64];
 //static char BANNER[ ] = { "Ready!\r\n" };
+
 static enum CMD_STATE cmdState = PREFIX_2; 
 /********************************************************************
 *    Function Name:  vPDACmd                                        *
@@ -70,9 +77,19 @@ boolean vPDACmd( unsigned char cByteRxed)
       // Motor status
       else if( 'M' == cmdByte )				// Both motors reverse
       {
-        //string_size = sprintf(motor_string,(const far rom char *)"%03u,%05u,%05u,%+05i,%+05i\n", current_heading(), uiLeftEMF(), uiRightEMF(), iVelocityLeft(), iVelocityRight() );
+        //string_size = sprintf(motor_string,(const far rom char *)"%03u,%05u,%05u,%+05i,%+05i\n", current_gyro_heading(), uiLeftEMF(), uiRightEMF(), iVelocityLeft(), iVelocityRight() );
+        //int string_size = sprintf(motor_string,"%03u,%03u,%03u,%f\n", current_gyro_heading(), (int)(angle_accumulator * 1.974358974), (int)(rotation_accumulator), 3.14);
         //motor_string[string_size] = 0;
-        //vUARTIOputsBT(motor_string);
+        //vUARTIOWrite((const unsigned char *)motor_string, string_size);
+        
+        SerialPort.print(current_gyro_heading());
+        SerialPort.print(',');
+        SerialPort.print(angle_accumulator * 1.974358974);
+        SerialPort.print(',');
+        //SerialPort.print(rotation_accumulator);
+        //SerialPort.print(',');
+        SerialPort.println(gyro_rate_monitor);
+        
         cmdState = PREFIX_2;
         return true;
       }

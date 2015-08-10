@@ -523,8 +523,8 @@ void vMotorMonitor( void )
         delta_motion.sVal = motion_accumulator * SCALED_MM_PER_TICK;
         
         //Convert from little endian to big
-        sensorPacket.sensor.iAngleTraveled.byte.LB = turn_delta.byte.HB;
-        sensorPacket.sensor.iAngleTraveled.byte.HB = turn_delta.byte.LB;
+        //sensorPacket.sensor.iAngleTraveled.byte.LB = turn_delta.byte.HB;
+        //sensorPacket.sensor.iAngleTraveled.byte.HB = turn_delta.byte.LB;
         //This divides the motion by 256 since SCALED_MM_PER_TICK is * 256
         sensorPacket.sensor.iDistanceTraveled.byte.HB = delta_motion.byte.HB;
         sensorPacket.sensor.iDistanceTraveled.byte.LB = delta_motion.byte.UB;
@@ -773,7 +773,7 @@ static void vMotorDriveRight( int speed, unsigned long distance )
 	{
 		digitalWrite(RMF, RM_FORWARD_DISABLE);
 		digitalWrite(RMR, RM_REVERSE_DISABLE);
-                analogWrite(RIGHT_HB25_CONTROL, SPEED_0);
+    analogWrite(RIGHT_HB25_CONTROL, SPEED_0);
 		RightMotor->CurrentVelocity = 0;
 		RightMotor->CurrentDistance = 0;
 		RightMotor->State = MOTORS_STOPPED;
@@ -781,7 +781,7 @@ static void vMotorDriveRight( int speed, unsigned long distance )
 	else if( speed > 0 )
 	{
 		digitalWrite(RMF, RM_FORWARD_ENABLE);
-                digitalWrite(RMR, RM_REVERSE_DISABLE);
+    digitalWrite(RMR, RM_REVERSE_DISABLE);
 	}
 	else
 	{

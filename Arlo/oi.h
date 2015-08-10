@@ -203,42 +203,42 @@ typedef union _DWORD_VAL
 
 typedef struct _SENSOR_DATA
 {
-	unsigned char 	ucBumpDrop;                 // Packet ID:  7 - Bumps and Wheel Drops 
-	unsigned char	bWall;                      // Packet ID:  8 - Wall
-	unsigned char	bCliffLeft;                 // Packet ID:  9 - Cliff Left
-	unsigned char	bCliffFrontLeft;            // Packet ID: 10 - Cliff Front Left
-	unsigned char	bCliffFrontRight;           // Packet ID: 11 - Cliff Front Right
-	unsigned char	bCliffRight;                // Packet ID: 12 - Cliff Right
-	unsigned char	bVirtualWall;               // Packet ID: 13 - Virtual Wall
-	unsigned char	ucOverCurrent;              // Packet ID: 14 - Low Side Driver and Wheel Overcurrents
-	unsigned char	ucUnused1;                  // Packet ID: 15 - Unused byte
-	unsigned char	ucUnused2;                  // Packet ID: 16 - Unused byte
-	unsigned char	ucInfraredRX;               // Packet ID: 17 - Infrared byte
-	unsigned char	ucButtons;                  // Packet ID: 18 - Buttons
-	WORD_VAL	iDistanceTraveled;          // Packet ID: 19 - Distance Traveled
-	WORD_VAL	iAngleTraveled;             // Packet ID: 20 - Angle Travled 
-	unsigned char	ucChargingState;
-	unsigned int	uiBatteryVoltage;
-	int		iCurrent;
-	char		cBatteryTemp;
-	unsigned int	uiBatteryCharge;
-	unsigned int	uiBatteryCapacity;
-	unsigned int	uiWallSignal;
-	unsigned int	uiCliffLeftSignal;
-	unsigned int	uiCliffFrontLeftSignal;
-	unsigned int	uiCliffFrontRightSignal;
-	unsigned int	uiCliffRightSignal;
-	unsigned char	ucDigitalInputs;
-	WORD_VAL	uiAnalogSignal;
-	unsigned char	ucChargingSource;
-	enum OI_STATE 	ucOIMode;
-	unsigned char	ucSongNumber;
-	unsigned char	ucSongPlaying;
-	unsigned char	ucNumberofStreamPackets;
-	int		iRequestedVelocity;
-	WORD_VAL	iRequestedRadius;
-	WORD_VAL	iRequestedRightVelocity;
-	WORD_VAL	iRequestedLeftVelocity;
+	unsigned char ucBumpDrop;                 //  0 Packet ID:  7 - Bumps and Wheel Drops 
+	unsigned char	bWall;                      //  1 Packet ID:  8 - Wall
+	unsigned char	bCliffLeft;                 //  2 Packet ID:  9 - Cliff Left
+	unsigned char	bCliffFrontLeft;            //  3 Packet ID: 10 - Cliff Front Left
+	unsigned char	bCliffFrontRight;           //  4 Packet ID: 11 - Cliff Front Right
+	unsigned char	bCliffRight;                //  5 Packet ID: 12 - Cliff Right
+	unsigned char	bVirtualWall;               //  6 Packet ID: 13 - Virtual Wall
+	unsigned char	ucOverCurrent;              //  7 Packet ID: 14 - Low Side Driver and Wheel Overcurrents
+	unsigned char	ucUnused1;                  //  8 Packet ID: 15 - Unused byte
+	unsigned char	ucUnused2;                  //  9 Packet ID: 16 - Unused byte
+	unsigned char	ucInfraredRX;               // 10 Packet ID: 17 - Infrared byte
+	unsigned char	ucButtons;                  // 11 Packet ID: 18 - Buttons
+	WORD_VAL	    iDistanceTraveled;          // 12 Packet ID: 19 - Distance Traveled
+	WORD_VAL	    iAngleTraveled;             // 14 Packet ID: 20 - Angle Travled 
+	unsigned char	ucChargingState;            // 16 Packet ID: 21 - 
+	unsigned int	uiBatteryVoltage;           // 17 Packet ID: 22 - 
+	int		        iCurrent;                   // 19
+	char		      cBatteryTemp;               // 21
+	unsigned int	uiBatteryCharge;            // 22
+	unsigned int	uiBatteryCapacity;          // 24
+	unsigned int	uiWallSignal;               // 26
+	unsigned int	uiCliffLeftSignal;          // 28
+	unsigned int	uiCliffFrontLeftSignal;     // 30
+	unsigned int	uiCliffFrontRightSignal;    // 32
+	unsigned int	uiCliffRightSignal;         // 34
+	unsigned char	ucDigitalInputs;            // 36
+	WORD_VAL	    uiAnalogSignal;             // 37
+	unsigned char	ucChargingSource;           // 39
+	enum OI_STATE ucOIMode;                   // 40
+	unsigned char	ucSongNumber;               // 41
+	unsigned char	ucSongPlaying;              // 42
+	unsigned char	ucNumberofStreamPackets;    // 43
+	int		        iRequestedVelocity;         // 44
+	WORD_VAL	    iRequestedRadius;           // 46
+	WORD_VAL	    iRequestedRightVelocity;    // 48
+	WORD_VAL	    iRequestedLeftVelocity;     // 50
 }SENSOR_DATA;
 
 typedef union _SENSORS

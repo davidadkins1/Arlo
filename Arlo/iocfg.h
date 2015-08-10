@@ -7,26 +7,25 @@
 
 
 // if sending out debug information
-#define SERIAL_DEBUG
+//#define SERIAL_DEBUG
 
 // Port selection
 
 // if using Bluetooth
-//#define BLUETOOTH_SUPPORTED
-//#define BLUETOOTH_CONTROL
+#define BLUETOOTH_SUPPORTED
+#define BLUETOOTH_CONTROL
 
-#ifdef SERIAL_DEBUG
-// Serial1 on the Mega used for Bluetooth serial port
-//#define TxD 18
-//#define RxD 19
-//#define DebugPort Serial
-#define DebugPort Serial2
-#endif
-
-#ifdef BLUETOOTH_CONTROL
-#define SerialPort Serial2
+#ifdef BLUETOOTH_SUPPORTED
+  #define BluetoothPort Serial2
+  
+  #ifdef BLUETOOTH_CONTROL
+    #define SerialPort Serial2
+  #else
+    #define SerialPort Serial
+    #define DebugPort Serial2
+  #endif
 #else
-#define SerialPort Serial
+  #define SerialPort Serial
 #endif
 
 // Sonar
