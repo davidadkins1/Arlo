@@ -33,6 +33,8 @@ extern SENSORS sensorPacket;
 //static int velocityLeft[MAX_BEHAVIOR];
 //static int velocityRight[MAX_BEHAVIOR];
 
+static enum MOTOR_STATE motor_state = MOTOR_START;
+
 static struct MOTOR_CONTROL_REQUESTS motorControl[MAX_BEHAVIOR];
 //static enum BEHAVIORS behaviorControl[MAX_BEHAVIOR];
 static enum BEHAVIORS behaviorPriority[MAX_BEHAVIOR];
@@ -294,6 +296,17 @@ static void motor_drive( struct MOTOR_CONTROL_REQUESTS *motor_parameters )
 */
 }
 
+bool motors_running(void)
+{
+  bool run_state = true;
+  
+  if((MOTORS_STOPPED == LeftMotor->State) && (MOTORS_STOPPED == RightMotor->State))
+  {
+    run_state = false;
+  }
+  return run_state;
+}
+
 /********************************************************************
 *    Function Name:	vMotorMonitor				    *
 *    Return Value:	none					    *
@@ -303,7 +316,6 @@ static void motor_drive( struct MOTOR_CONTROL_REQUESTS *motor_parameters )
 ********************************************************************/
 void vMotorMonitor( void )
 {
-  static enum MOTOR_STATE motor_state = MOTOR_START;
   static unsigned long motor_timer;
   static unsigned long left_motor_timer;
   static unsigned long right_motor_timer;

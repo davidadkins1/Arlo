@@ -12,8 +12,8 @@
 // Port selection
 
 // if using Bluetooth
-#define BLUETOOTH_SUPPORTED
-#define BLUETOOTH_CONTROL
+//#define BLUETOOTH_SUPPORTED
+//#define BLUETOOTH_CONTROL
 
 #ifdef BLUETOOTH_SUPPORTED
   #define BluetoothPort Serial2
